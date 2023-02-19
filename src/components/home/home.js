@@ -147,7 +147,7 @@ export function Categories({ time = 3000 }) {
       </Link>
       <br />
       {cats.map(({ description }, i) => (
-        <span key={i} hidden={i !== index || undefined} className="transition horizontal" style={{ width: '100%', left: 0 }}>
+        <span key={i} hidden={i !== index || undefined} className="transition horizontal" style={{ width: '100%', left: 10 }}>
           {description}
         </span>
       ))}

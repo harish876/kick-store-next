@@ -10,7 +10,7 @@ import { signIn, signOut } from "next-auth/react"
 export default function Login(){
     const [show,setShow] = useState(false)
     const handleGoogleSignIn = async() =>{
-        signIn('google',{callbackUrl:'http://localhost:3000'})
+        signIn('google',{callbackUrl:'http://localhost:3000'}) 
     }
     const handleGitHubSignIn = async() =>{
         signIn('github',{callbackUrl:'http://localhost:3000'})
