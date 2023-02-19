@@ -157,8 +157,8 @@ export default function Main({ session }) {
               onCancel={handleCancel} //handle cancel has to be given twice to enable the cross icon
               okText="Checkout"
               footer={[
-                <Button onClick={handleCancel}>Return</Button>,
-                <Button onClick={handleOk}>Checkout</Button>
+                <Button key="return" onClick={handleCancel}>Return</Button>,
+                <Button key="checkout" onClick={handleOk}>Checkout</Button>
               ]}
               width={700}
               >

@@ -29,7 +29,7 @@ function Kart({kartData,editAttributes,userInfo}) {
             Object.entries(attributes).map((attribute) => {
               const textColor = attribute[1] === '#ffffff' ? "black":"whitesmoke"
               return (
-                <Tag style={{ color: `${textColor}`}} color={attribute[1]}>
+                <Tag key={attribute[1]}style={{ color: `${textColor}`}} color={attribute[1]}>
                   {attribute[0]}
                 </Tag>
               )
@@ -75,6 +75,7 @@ function Kart({kartData,editAttributes,userInfo}) {
         items.map(({ id, name, customModel = {}, description, price, size, basePrice , quantity=1 }, index) => {
           return (
             <Collapse
+              key={id}
               bordered={false}
               expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
               style={{

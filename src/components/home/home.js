@@ -1,4 +1,5 @@
 import React, { useRef, useMemo, useEffect, useState } from 'react'
+import Link from 'next/link'
 import { useFrame, useThree } from '@react-three/fiber'
 import ConverseDoodle from '../models/ConverseDoodle'
 
@@ -124,7 +125,7 @@ export function Categories({ time = 3000 }) {
 
   return (
     <p style={{ marginLeft:'30px',height: 80 }}>
-      <a href="/" style={{ alignItems:'center',textAlign: 'left',paddingLeft:'95px',width: 400 }} onClick={() => set((index + 1) % 2)}>
+      <Link href={"/"} style={{ alignItems:'center',textAlign: 'left',paddingLeft:'95px',width: 400 }} onClick={() => set((index + 1) % 2)}>
         <div
           ref={ref}
           className="progress"
@@ -143,7 +144,7 @@ export function Categories({ time = 3000 }) {
             {npm}
           </span>
         ))}
-      </a>
+      </Link>
       <br />
       {cats.map(({ description }, i) => (
         <span key={i} hidden={i !== index || undefined} className="transition horizontal" style={{ width: '100%', left: 0 }}>
