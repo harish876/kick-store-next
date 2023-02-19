@@ -123,7 +123,7 @@ export function Categories({ time = 3000 }) {
   }, [index])
 
   return (
-    <p style={{ height: 70 }}>
+    <p style={{ marginLeft:'30px',height: 80 }}>
       <a href="/" style={{ alignItems:'center',textAlign: 'left',paddingLeft:'95px',width: 400 }} onClick={() => set((index + 1) % 2)}>
         <div
           ref={ref}
