@@ -14,5 +14,6 @@ export const authOptions = {
         clientSecret: process.env.GITHUB_SECRET,
       }),
   ],
+  secret:process.env.NEXTAUTH_SECRET
 }
 export default NextAuth(authOptions)
