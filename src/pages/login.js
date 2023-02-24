@@ -6,15 +6,57 @@ import Image from 'next/image'
 import { HiAtSymbol,HiFingerPrint } from 'react-icons/hi'
 import { useState } from 'react';
 import { signIn, signOut } from "next-auth/react"
+import { useFormik } from 'formik';
+import { useRouter } from 'next/router';
+
 
 export default function Login(){
     const [show,setShow] = useState(false)
-    const handleGoogleSignIn = async() =>{
+    const router = useRouter()
+    const handleGoogleSignIn = async() =>{ 
         signIn('google',{callbackUrl:'http://localhost:3000'}) 
     }
     const handleGitHubSignIn = async() =>{
         signIn('github',{callbackUrl:'http://localhost:3000'})
     }
+    const handleSubmit = async(values)=>{
+        const status = await signIn('credentials',{
+            redirect:false,
+            email:values.email,
+            password:values.password,
+            callbackUrl:"/" 
+        })
+        if(status.ok)
+        {
+             router.push(status.url)
+        }
+    }
+    const validateValues = (values) =>{
+        const errors={}
+        const {email,password} = values
+        if(!email){
+            errors.email = "Enter email"
+        }
+        else if((!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email))){
+            errors.email= "Invalid Email address"
+        }
+        if(!password){
+            errors.password = "Enter Password"
+        }
+        else if(password==='' || password.length<=6){
+            errors.password = 'Not a strong password'
+        }
+        return errors
+    }
+
+    const formik = useFormik({
+        initialValues:{
+            email:'',
+            password:''
+        },
+        validate:validateValues,
+        onSubmit:handleSubmit
+    })
     return (
         <Layout>
         <Head>
@@ -28,30 +70,34 @@ export default function Login(){
             </div>
 
             {/* form */}
-            <form className='flex flex-col gap-5'>
+            <form className='flex flex-col gap-5' onSubmit={formik.handleSubmit}   >
                 <div className={styles.input_group}>
                     <input 
                     type="email"
                     name='email'
                     placeholder='Email'
                     className={styles.input_text}
+                    {...formik.getFieldProps("email")}
                     />
                     <span className='icon flex items-center px-4'>
                         <HiAtSymbol size={25}/>
                     </span>
                 </div>
+                {formik.errors.email && formik.touched.email?<span className='w-3/4 flex justify-center mx-auto text-rose-600'>{formik.errors.email}</span>:<span></span>}
                 <div className={styles.input_group}>
                     <input 
                     type={`${show?"text":"password"}`}
                     name='password'
                     placeholder='Password'
                     className={styles.input_text}
+                    {...formik.getFieldProps("password")}
                     />
                     <span className='icon flex items-center px-4' onClick={()=>setShow(!show)}>
                         <HiFingerPrint size={25}/>
                     </span>
                 </div>
-
+                
+                {formik.errors.password && formik.touched.password?<span className='w-3/4 flex justify-center mx-auto text-rose-600'>{formik.errors.password}</span>:<span></span>}
                 {/* login buttons */}
                 <div className="input-button">
                     <button type='submit' className={styles.button}>
