@@ -8,16 +8,28 @@ import { useState } from 'react';
 import { signIn, signOut } from "next-auth/react"
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
+import { notification } from 'antd';
 
 
 export default function Login(){
     const [show,setShow] = useState(false)
     const router = useRouter()
+    const [api, contextHolder] = notification.useNotification();
+
+    const openNotificationV1 = (type) => {
+        api[type]({
+          message: 'Login Success',
+          description:'Successfully Logged in',
+        });
+      };
+
     const handleGoogleSignIn = async() =>{ 
         signIn('google',{callbackUrl:'http://localhost:3000'}) 
+        openNotificationV1("success")
     }
     const handleGitHubSignIn = async() =>{
         signIn('github',{callbackUrl:'http://localhost:3000'})
+        openNotificationV1("success")
     }
     const handleSubmit = async(values)=>{
         const status = await signIn('credentials',{
@@ -28,7 +40,8 @@ export default function Login(){
         })
         if(status.ok)
         {
-             router.push(status.url)
+            router.push(status.url)
+            openNotificationV1("success")
         }
     }
     const validateValues = (values) =>{
@@ -62,7 +75,7 @@ export default function Login(){
         <Head>
             <title>Login</title>
         </Head>
-        
+        {contextHolder}
         <section className='w-3/4 mx-auto flex flex-col gap-10'>
             <div className="title">
                 <article className='text-gray-800 text-4xl font-bold py-4'>Kick Store</article>
