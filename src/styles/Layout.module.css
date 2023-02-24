@@ -1,8 +1,6 @@
 .imgStyle{
-    @apply sm:bg-form-blue-dark rounded-l-md;
-    display: flex;
+    @apply hidden bg-form-blue-dark rounded-l-md lg:flex;
     flex: 1;
-    position: relative;
     overflow: hidden;
 }
 
