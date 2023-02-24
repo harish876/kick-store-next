@@ -3,7 +3,7 @@ import styles from '@/styles/Layout.module.css'
 export default function Layout({children}){
     return(
         <div className="flex h-screen bg-form-blue-dark">
-            <div className="m-auto bg-slate-50  flex-col rounded-md w-3/5 h-3/4 flex md:flex-row">
+            <div className="m-auto bg-slate-50  flex-col rounded-md w-3/4 h-3/4 flex md:flex-row">
                 <div className={styles.imgStyle}>
                     {<img 
                         src='https://i.graphicmama.com/blog/wp-content/uploads/2016/12/06093131/prud_x1_800x600.gif'
