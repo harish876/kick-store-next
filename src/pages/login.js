@@ -9,27 +9,23 @@ import { signIn, signOut } from "next-auth/react"
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import { notification } from 'antd';
+import { successLoginNotification,failureLoginNotification } from '@/components/utils/data';
 
 
 export default function Login(){
     const [show,setShow] = useState(false)
     const router = useRouter()
     const [api, contextHolder] = notification.useNotification();
-
-    const openNotificationV1 = (type) => {
-        api[type]({
-          message: 'Login Success',
-          description:'Successfully Logged in',
-        });
-      };
+    const url = process.env.NODE_ENV === 'production'?'https://kick-store-next-harish876.vercel.app':'http://localhost:3000'
+    const openNotificationV1 = (type,response) => {api[type](response);};
 
     const handleGoogleSignIn = async() =>{ 
-        signIn('google',{callbackUrl:'http://localhost:3000'}) 
-        openNotificationV1("success")
+        signIn('google',{callbackUrl:url}) 
+        openNotificationV1("success",successLoginNotification)
     }
     const handleGitHubSignIn = async() =>{
-        signIn('github',{callbackUrl:'http://localhost:3000'})
-        openNotificationV1("success")
+        signIn('github',{callbackUrl:url})
+        openNotificationV1("success",successLoginNotification)
     }
     const handleSubmit = async(values)=>{
         const status = await signIn('credentials',{
@@ -41,7 +37,10 @@ export default function Login(){
         if(status.ok)
         {
             router.push(status.url)
-            openNotificationV1("success")
+            openNotificationV1("success",successLoginNotification)
+        }
+        else{
+            openNotificationV1("error",failureLoginNotification)
         }
     }
     const validateValues = (values) =>{

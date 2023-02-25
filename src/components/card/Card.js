@@ -4,6 +4,7 @@ import RenderModel from "../models/RenderModel"
 import { shoeData } from "../utils/data"
 import { Tag, Tooltip, message, Modal } from "antd"
 import {v4 as uuidv4} from 'uuid';
+import Link from "next/link"
 
 const defaultModel = shoeData["NewBalance"]
 export default function Card({ getKartData, session }) {
@@ -87,9 +88,9 @@ export default function Card({ getKartData, session }) {
             <div class="gradient" color={color}></div>
           </div>
           <h1 class="nike">{watermark}</h1>
-          <div class="share">
-            <a href='./'><MoreOutlined /></a>
-          </div>
+          {/*<div class="share">
+            <a href='./'><MoreOutlined style={{paddingBottom:'10px'}} /></a>
+          </div>*/}
           <RenderModel props={key} chooseCustomModel={chooseCustomModel} />
         </div>
         <div class="info">
@@ -97,7 +98,10 @@ export default function Card({ getKartData, session }) {
             <div>
               <h1 class="big">{heading}</h1>
             </div>
-            <h3 class="small">{subHeading}</h3>
+            <div className='flex-1 space-x-2'>
+              <h3 class="small">{subHeading}</h3>
+              <Tag color={color}>More {name}</Tag>
+            </div>
           </div>
           <div class="description">
             <h3 class="title">Product Info</h3>

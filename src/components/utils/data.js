@@ -60,8 +60,8 @@ const shoeData = {
         primary:'orange',
         watermark:'Custom',
         heading:`Fila Customizable Shoes.`,
-        subHeading:'Click on the model to select colors',
-        description:`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.`,
+        subHeading:'Customize your shoe',
+        description:`Click on the model to select colors.`,
         price:89,
         basePrice:89,
         quantity:1
@@ -75,9 +75,23 @@ const emptyMessage = {
     message:'No Orders Placed yet',
     description:'Select some cool sneakers!'
 }
-
+const successLoginNotification ={
+    message: 'Login Success',
+    description:'Successfully Logged in',
+}
+const failureLoginNotification ={
+    message: 'Login Failed',
+    description:'Invalid Credentials',
+}
+const successSignupNotification ={
+    message: 'Signup Success',
+    description:'Successfully Signed in',
+}
 module.exports ={
     shoeData,
     successMessage,
-    emptyMessage
+    emptyMessage,
+    successLoginNotification,
+    successSignupNotification,
+    failureLoginNotification
 }

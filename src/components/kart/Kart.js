@@ -1,5 +1,5 @@
 import React from "react"
-import { isEmpty } from "lodash"
+import { isEmpty,get } from "lodash"
 import { Collapse, InputNumber, Space, Tag, theme, Empty } from "antd"
 import { EditOutlined, CheckCircleTwoTone, DeleteOutlined, CaretRightOutlined, DollarCircleFilled } from "@ant-design/icons"
 
@@ -7,7 +7,8 @@ const { Panel } = Collapse
 
 function Kart({kartData,editAttributes,userInfo}) {
   const items  = kartData
-  const {name='dude',email=''} = userInfo
+  const name = get(userInfo,'name','dude')
+  const email = get(userInfo,'email','')
   const { token } = theme.useToken()
 
   const panelStyle = {

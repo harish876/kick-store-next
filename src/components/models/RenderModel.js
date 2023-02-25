@@ -4,17 +4,16 @@ import NewBalance997 from './NewBalance997'
 import JordanModel from './JordansModel'
 import NikeAirPegasusModel from './NikeAirPegasusModel'
 import VansModel from './VansModel'
-import { Spin } from 'antd';
+import { Spin, Skeleton } from 'antd';
 
 import { get } from "lodash"
-
 export default function RenderModel(props) {
 
     const key = get(props,'props',"NewBalance997")
     return (
         <>
             {['NewBalance997'].includes(key) &&
-            <Suspense fallback={null}>
+            <Suspense fallback={<Spin/>}>
                 <NewBalance997 />
             </Suspense>}
 

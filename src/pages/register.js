@@ -6,12 +6,29 @@ import styles from '../styles/Form.module.css';
 import { HiAtSymbol,HiFingerPrint,HiUser } from 'react-icons/hi'
 import { useState } from 'react';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/router';
+import { notification } from 'antd';
+import { successSignupNotification } from '@/components/utils/data';
 
 export default function Register(){
 
 	const [show,setShow] = useState({password:false,cpassword:false})
+    const router = useRouter()
+    const [api, contextHolder] = notification.useNotification();
+    const openNotificationV1 = (type,response) => {api[type](response)};
+
     const handleSubmit = async(values)=>{
-        console.log(values)
+        const options={
+            method:"POST",
+            headers:{"Content-Type":"application/json "},
+            body: JSON.stringify(values)
+        }
+        const url = process.NODE_ENV === 'production'?'https://kick-store-next-harish876.vercel.app/api/auth/signup': 'http://localhost:3000/api/auth/signup'
+        const response = await fetch(url,options)
+        if(response){
+            openNotificationV1("success",successSignupNotification)
+            router.push('/')
+        }
     }
     const validateValues = (values) =>{
         const errors={}
@@ -22,7 +39,7 @@ export default function Register(){
         if(!email){
             errors.email = "Enter email"
         }
-        else if((!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email))){
+        else if((!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email))){ 
             errors.email= "Invalid Email address"
         }
         if(!password){
@@ -51,7 +68,7 @@ export default function Register(){
 			<Head>
 				<title>Register</title>
 			</Head>
-			
+            {contextHolder}
 			<section className='w-3/4 mx-auto flex flex-col gap-10'>
             <div className="title">
                 <article className='text-gray-800 text-4xl font-bold py-4'>Kick Store</article>

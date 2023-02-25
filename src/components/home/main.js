@@ -5,7 +5,7 @@ import { Block } from "./blocks"
 import { Shapes, Categories, Box } from "./home"
 import state from "./store"
 import Card from "../card/Card"
-import { isEmpty } from "lodash"
+import { isEmpty,get } from "lodash"
 import { FloatButton, Modal, notification,Drawer,Timeline, Button, Avatar } from "antd"
 import { ShoppingCartOutlined,UserOutlined } from "@ant-design/icons"
 import Kart from "../kart/Kart"
@@ -58,7 +58,7 @@ export default function Main({ session }) {
     setIsModalOpen(false)
     ! isEmpty(kartData) 
     ? openNotificationWithIcon('success',successMessage.message,successMessage.description) 
-    : openNotificationWithIcon('info',emptyMessage.message,emptyMessage.description+' '+(session?session.user.name:'dude'))
+    : openNotificationWithIcon('info',emptyMessage.message,emptyMessage.description+' '+(session?get(session,'user.name','dude'):''))
   }
   const handleCancel = () => {
     setIsModalOpen(false)
@@ -129,7 +129,7 @@ export default function Main({ session }) {
               </a>
             </div>
             {<div className="menu right" style={{ top: "1.55rem", paddingRight: "5px" }}>
-              {session && <span><Avatar src={session.user.image} style={{backgroundColor: '#87d068'}}icon={<UserOutlined />}/></span>}
+              {session && <span><Avatar src={session.user.image} style={{ backgroundColor: '#87d068'}}icon={<UserOutlined  />}/></span>}
               {session && <span onClick={handleSignOut}>Sign out</span>}
               {!session && <span><a href='./login'>Login</a></span>}
               {!session && <span><a href='./register'>Sign up</a></span>}
