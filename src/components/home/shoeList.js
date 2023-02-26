@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef} from "react"
 import ShoeCard from "../card/ShoeCard"
+import { Avatar } from "antd"
 import { Splide, SplideSlide,SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
-
+import { UserOutlined} from "@ant-design/icons"
 import { nikeList } from "../utils/data";
 
 export default function ShoeList() {
