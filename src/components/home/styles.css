@@ -89,6 +89,7 @@
   position: absolute;
   top: 2rem;
   left: 2rem;
+  height: auto;
 }
 
 .menu.right {

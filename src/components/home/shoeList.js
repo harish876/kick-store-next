@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef} from "react"
 import ShoeCard from "../card/ShoeCard"
 import { Avatar } from "antd"
+import { UserOutlined} from "@ant-design/icons"
 import { Splide, SplideSlide,SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
-import { UserOutlined} from "@ant-design/icons"
 import { nikeList } from "../utils/data";
 
 export default function ShoeList() {
-    const session = false
+    const session = false 
     const options = {
         type         : 'loop',
         gap          : '1.5rem',
@@ -35,6 +35,8 @@ export default function ShoeList() {
     }
     /*@TODO 
         1.customise the arrow key
+        2.make navbar global
+        3.add layout.js to the main app
     */
   return (
     <>

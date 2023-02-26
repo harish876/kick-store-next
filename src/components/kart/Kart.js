@@ -59,7 +59,7 @@ function Kart({kartData,editAttributes,userInfo}) {
         imageStyle={{ display:'flex',justifyContent:'center',textAlign:'center',height: 60 }}
         description={
           <span>
-            Shop Some Sneakers<a href="./">Here</a>{name}
+            Shop Some Sneakers<a href="./list">Here</a>{name}
           </span>
         }
       />

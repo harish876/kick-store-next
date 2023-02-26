@@ -11,13 +11,14 @@ function ShoeCard(data) {
   )
 }
 export function NoDiscountShoeCard (data) {
+    const id = get(data,'data.data.id')
     const name = get(data,'data.data.name','')
     const price = get(data,'data.data.price',0)
     const image = get(data,'data.data.image','')
     const alt= get(data,'data.data.alt','')
     return(
         <div className="flex flex-col mt-4 space-y-2 px-4 w-full md:w-full lg:my-4 lg:px-4 lg:w-full hover:scale-110  cursor-pointer transition-all">
-                <Link href="#">
+                <Link href={`list/${id}`}>
                     <img alt={alt} className="block h-auto w-full" src={image}/>
                 </Link>
             <header className="flex items-start flex-wrap leading-normal md:h-full">

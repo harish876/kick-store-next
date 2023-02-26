@@ -44,9 +44,9 @@ h2 {
   color: #272730;
   font-size: 62px;
   letter-spacing: -4px;
-  line-height: 62px;
+  line-height: 56px;
   margin-top: 0;
-  margin-bottom: 3rem;
+  /*margin-bottom: 3rem;*/
 }
 
 h3 {

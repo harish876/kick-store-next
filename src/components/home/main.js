@@ -128,12 +128,12 @@ export default function Main({ session }) {
                 <h2 style={{ fontSize: "2em" }}>Kick Store</h2>
               </a>
             </div>
-            {<div className="menu right" style={{ top: "1.55rem", paddingRight: "5px" }}>
+            <div className="menu right" style={{ top: "1.55rem", paddingRight: "5px" }}>
               {session && <span><Avatar src={session.user.image} style={{ backgroundColor: '#87d068'}}icon={<UserOutlined  />}/></span>}
               {session && <span onClick={handleSignOut}>Sign out</span>}
               {!session && <span><a href='./login'>Login</a></span>}
               {!session && <span><a href='./register'>Sign up</a></span>}
-            </div>}
+            </div>
             <div className="jumbo">
               <h1 style={{ left: "1rem", zIndex: "-1" }}>
                 &nbsp;&nbsp;&nbsp;Next Gen
