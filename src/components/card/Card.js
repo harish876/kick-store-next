@@ -100,7 +100,7 @@ export default function Card({ getKartData, session }) {
             </div>
             <div className='flex-1 space-x-2'>
               <h3 class="small">{subHeading}</h3>
-              <Tag color={color}>More {name}</Tag>
+              <Link href='./list'><Tag color={color}>More {name}</Tag></Link>
             </div>
           </div>
           <div class="description">

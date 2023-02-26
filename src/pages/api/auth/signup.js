@@ -10,7 +10,7 @@ export default async function handler(req,res){
         console.log(req.body)
         if(isEmpty(req.body))
         {
-            return res.status(404).json({error:"No form data"})
+            return res.status(404).json({error:"No form data"}) 
         }
         const {username,email,password} = req.body
         const checkExisitng = await Users.findOne({email})

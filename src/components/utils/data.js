@@ -67,6 +67,78 @@ const shoeData = {
         quantity:1
     },
 }
+const nikeList = [
+    {
+        id:'nk001',
+        name:'NIKE KD 15 ALL-STAR',
+        price:'130.00',
+        image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV1199-100.jpg?v=1677377654',
+        alt:'NIKE KD 15 ALL-STAR',
+        isDiscount:true,
+        disount:'10',
+        prevPrice:'140.00'
+    },
+    {
+        id:'nk002',
+        name:'AIR JORDAN 1 LOW TRUE BLUE',
+        price:'130.00',
+        image:'https://cdn.shopify.com/s/files/1/0212/4102/products/553558-412.jpg?v=1677375488',
+        alt:'AIR JORDAN 1 LOW TRUE BLUE',
+        isDiscount:false,
+    },
+    {
+        id:'nk003',
+        name:'NIKE AIR MAX 95 BLACK EARTH SEQUOIA CARGO KHAKI',
+        price:'140.00',
+        image:'https://cdn.shopify.com/s/files/1/0212/4102/products/FD0652-001.jpg?v=1677354064',
+        alt:'NIKE AIR MAX 95 BLACK EARTH SEQUOIA CARGO KHAKI',
+        isDiscount:true,
+        disount:'20',
+        prevPrice:'150.00'
+    },
+    {
+        id:'nk004',
+        name:'NIKE AIR FORCE 1 LOW 07 LX PLAID PALE IVORY STADIUM GREEN',
+        price:'160.00',
+        image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV0791-100.jpg?v=1677375950',
+        alt:'NIKE AIR FORCE 1 LOW 07 LX PLAID PALE IVORY STADIUM GREEN',
+        isDiscount:false,
+    },
+    {
+        id:'nk005',
+        name:'NIKE AIR MAX 97 MOVING COMPANY',
+        price:'120.00',
+        image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV2621-200.jpg?v=1677353027',
+        alt:'NIKE AIR MAX 97 MOVING COMPANY',
+        isDiscount:true,
+        disount:'13',
+        prevPrice:'150.00'
+    },
+    {
+        id:'nk006',
+        name:'NIKE AIR MAX SCORPION FK BARELY VOLT',
+        price:'100.00',
+        image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DJ4701-300.jpg?v=1677352770',
+        alt:'NIKE AIR MAX SCORPION FK BARELY VOLT',
+        isDiscount:false,
+    },
+    {
+        id:'nk007',
+        name:'NIKE AIR FORCE 1 LOW 07 RETRO COLOR OF THE MONTH PINK GUM',
+        price:'115',
+        image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DM0576-101.jpg?v=1677352527',
+        alt:'NIKE AIR FORCE 1 LOW 07 RETRO COLOR OF THE MONTH PINK GUM',
+        isDiscount:false,
+    },
+    {
+        id:'nk008',
+        name:'NIKE AIR FORCE 1 LOW 07 MEDIUM BLUE',
+        price:'100',
+        image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DH7561-104.jpg?v=1677351775',
+        alt:'NIKE AIR FORCE 1 LOW 07 MEDIUM BLUE',
+        isDiscount:false,
+    },
+]
 const successMessage = {
     message:'Order Placed Successfully',
     description:'Order Number 2145677. Mail has been sent to your email with invoice details. Thanks for Shopping with us'
@@ -93,5 +165,6 @@ module.exports ={
     emptyMessage,
     successLoginNotification,
     successSignupNotification,
-    failureLoginNotification
+    failureLoginNotification,
+    nikeList
 }

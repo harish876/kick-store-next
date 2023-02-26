@@ -6,5 +6,4 @@ const state = {
   zoom: 1,
   top: createRef()
 }
-
 export default state

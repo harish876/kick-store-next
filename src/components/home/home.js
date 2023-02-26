@@ -46,7 +46,27 @@ export function Shapes() {
   )
 }
 
-function Ring(props) {
+export function ShapesV1() {
+  const {
+    viewport: { width, height }
+  } = useThree()
+  const ringSize = Math.max(3, width / 2)
+  const crossSize = 0.7
+  return (
+    <>
+      <Ring position={[-width * 0.8, height * -3, -5]} scale={[ringSize, ringSize, 1]} />
+      <Cross position={[-width / 2.5, height / 8, -1]} scale={[crossSize, crossSize, 1]} rotation={[0, 0, Math.PI / 4]} />
+      <Minus position={[width / 3, -height / 3.5, -2]} scale={[0.8, 0.8, 0.8]} rotation={[0, 0, Math.PI / 10]} />
+      <group rotation={[Math.PI / 8, 0, 0]} position={[-width / 4, -height / 6, 0]}>
+        <Box scale={[0.8, 0.8, 0.8]} />
+        <Box position={[width / 1.5, height / 4, -3]} scale={[0.5, 0.5, 0.5]} />
+        <Lights />
+      </group>
+    </>
+  )
+}
+
+export function Ring(props) {
   return (
     <mesh {...props}>
       <ringBufferGeometry attach="geometry" args={[1, 1.4, 64]} />
@@ -55,7 +75,7 @@ function Ring(props) {
   )
 }
 
-function Cross(props) {
+export function Cross(props) {
   const inner = useRef()
   const ref = useWobble(0.1, 'sin', () => (inner.current.rotation.z += 0.001))
   return (
@@ -78,7 +98,7 @@ function Cross(props) {
   )
 }
 
-function Minus(props) {
+export function Minus(props) {
   const ref = useWobble(0.1, 'sin')
   return (
     <group ref={ref}>
@@ -92,7 +112,7 @@ function Minus(props) {
   )
 }
 
-function Lights() {
+export function Lights() {
   return (
     <>
       <ambientLight intensity={0.2} />
