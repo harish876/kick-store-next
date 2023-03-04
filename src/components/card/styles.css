@@ -158,11 +158,12 @@ a {
 }
 
 .shoeName div .big {
+  font-family: "Inter";
   margin-right: 10px;
   letter-spacing: 0.1px;
   font-size: 2rem;
   color: #333;
-  line-height: 1;
+  line-height: 1.5;
 }
 
 .shoeName div .new {

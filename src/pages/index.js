@@ -14,6 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main class='globalContainer'>
+        <Navbar/>
         <Main
           session={session}
         />

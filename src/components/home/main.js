@@ -117,7 +117,6 @@ export default function Main({ session }) {
           gl.setClearColor("white")
           gl.toneMappingExposure = 2.5
           gl.toneMappingWhitePoint = 1
-          // Export canvas events, we will put them onto the scroll area
           setEvents(events)
         }}>
         <Block factor={1.5} offset={0}>
@@ -129,7 +128,7 @@ export default function Main({ session }) {
               </a>
             </div>
             <div className="menu right" style={{ top: "1.55rem", paddingRight: "5px" }}>
-              {session && <span><Avatar src={session.user.image} style={{ backgroundColor: '#87d068'}}icon={<UserOutlined  />}/></span>}
+              {session && <span><Avatar src={session.user.image} style={{ backgroundColor: '#87d068'}}icon={<UserOutlined/>}/></span>}
               {session && <span onClick={handleSignOut}>Sign out</span>}
               {!session && <span><a href='./login'>Login</a></span>}
               {!session && <span><a href='./register'>Sign up</a></span>}
@@ -168,6 +167,7 @@ export default function Main({ session }) {
                 text="Test Props" 
                 editAttributes={editAttributes}/>
             </Modal>}
+            {/* make this dynamic */}
             <Drawer title="Track your Order: Order - 2145677" placement="right" onClose={onClose} open={timeLineOpen}>
             <Timeline mode="alternate">
               <Timeline.Item>Order Placed on  2015-09-01</Timeline.Item>
