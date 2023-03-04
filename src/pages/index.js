@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Main from '@/components/home/main'
 import { getSession,useSession } from "next-auth/react"
+import Navbar from '@/components/home/Navbar'
 
 export default function Home() {
   const {data:session} = useSession()
@@ -13,6 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main class='globalContainer'>
+        <Navbar/>
         <Main
           session={session}
         />

@@ -87,8 +87,9 @@
 
 .menu.left {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  top: 4rem;
+  left: 4rem;
+  height: auto;
 }
 
 .menu.right {
