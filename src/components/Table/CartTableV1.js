@@ -72,7 +72,7 @@ function TableRow(){
                 </div>
             </div>
         </td>
-        <td className='align-middle text-center h-32 text-gray-500'>$25.00</td>
+        <td className='align-middle text-center h-32 text-gray-500 w-48'>$25.00</td>
         <td className='align-middle text-center h-32'>
             <span className='flex justify-center text-black cursor-pointer hover:scale-75'><HiOutlineX/></span>
         </td>

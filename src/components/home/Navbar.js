@@ -22,7 +22,7 @@ function Navbar({session}) {
     };
   }, []);
   return (
-    <div className={`sticky top-0 z-20 h-20 flex align-middle bg-${navColor} text-${textColor} transition-all duration-1000`}
+    <div className={`sticky top-0 z-20 h-20 flex align-middle bg-${navColor} text-${textColor} transition-all duration-1100`}
       >
       <div className={`menu left text-${textColor} transition-colors`}>
           <h2 className={`text-${textColor}`}style={{ fontSize: "2em" }}>
