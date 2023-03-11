@@ -17,7 +17,6 @@ function Navbar({session}) {
   };
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
-    console.log(window.scrollY,navColor,textColor)
     return () => {
       window.removeEventListener("scroll", listenScrollEvent);
     };
