@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 function NotFound() {
   return (
@@ -6,7 +7,7 @@ function NotFound() {
 		<h1>404</h1>
 		<h3>Look like you're lost</h3>
 		<p>the page you are looking for not avaible!</p>
-		<a href="./" className="py-6">Go to Home</a>
+		<Link href="/" className="py-6">Go to Home</Link>
 	</div>
   )
 }

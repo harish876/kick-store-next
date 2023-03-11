@@ -7,6 +7,7 @@ const { Panel } = Collapse
 
 function Kart({kartData,editAttributes,userInfo}) {
   const items  = kartData
+  console.log(items)
   const name = get(userInfo,'name','dude')
   const email = get(userInfo,'email','')
   const { token } = theme.useToken()

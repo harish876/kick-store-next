@@ -30,7 +30,7 @@ function RenderSlides ({id,brandList}){
 }
 function ShoeModel({id,session}) {
   //temp_identifer
-  const {brand,brandList} = getBrand(id)
+  const {brand="nike",brandList=nikeList} = getBrand(id)
   const data = brandList.filter((nikeShoes) => nikeShoes.id === id)[0]  || {}
   let mainRef = createRef();
   let thumbsRef = createRef();
@@ -41,16 +41,16 @@ function ShoeModel({id,session}) {
       }
   },[id])
   return (
-    <div className="my-2 mx-auto px-4 md:px-12 h-full w-full">
-        <div className='h-full w-full my-16 p-4'>
+    <div className="my-0 mx-auto px-4 md:px-12 h-full w-full">
+        <div className='h-full w-full my-2 p-4'>
             <div className='h-auto '>
                     <Breadcrumb separator=">">
                         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
                         <Breadcrumb.Item href="/list">Shoes</Breadcrumb.Item>
                         <Breadcrumb.Item>{startCase(lowerCase(data.name))}</Breadcrumb.Item>
                     </Breadcrumb>
-                </div>
-            <div className='mt-4 mx-0 h-full flex flex-col w-full md:flex-row'>
+            </div>
+            <div className='mt-0 mx-0 h-full flex flex-col w-full md:flex-row'>
                 <div className="wrapper px-8 py-4 w-full md:w-2/5">
                     <Splide
                     options={ mainOptions }
@@ -91,7 +91,7 @@ function ShoeModel({id,session}) {
                                 paymentIcons && paymentIcons.map((paymentIcon)=>{
                                     return(
                                         <>
-                                            <img src={paymentIcon} width={64} height={64}/>
+                                            <img key={paymentIcon} src={paymentIcon} width={64} height={64}/>
                                             {/*<Image src={paymentIcon} width={64} height={64}/>*/}
                                             {/* learn to use image tag */}
                                         </>

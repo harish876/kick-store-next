@@ -36,7 +36,7 @@ const ShoeCarousel = ({items,brand}) =>{
     */
    return(
     <>
-    <h1 className="text-center text-3xl mt-10 uppercase bg-white text-gray-700 mx-auto px-2 tracking-normal">{brand}</h1>
+    <h1 className="text-center text-3xl m-2  uppercase bg-white text-gray-700 mx-auto px-2 tracking-normal">{brand}</h1>
     <div className='h-1 bg-form-blue-dark w-1/12 mx-auto'></div>
     <Splide
     options={ options }

@@ -87,21 +87,27 @@
 
 .menu.left {
   position: absolute;
-  top: 4rem;
-  left: 4rem;
+  top: 0.75rem;
+  left: 2rem;
   height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu.right {
   position: absolute;
-  top: 4rem;
+  top: 1.35rem;
   right: 1rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu.middle {
   position: absolute;
-  top: 4rem;
+  top: 1rem;
   left: 4rem;
   right: 4rem;
   display: flex;

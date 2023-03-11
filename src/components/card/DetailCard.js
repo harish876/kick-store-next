@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { ShoppingCartOutlined,DollarOutlined} from "@ant-design/icons"
 import { shoeData } from "../utils/data"
-import { message} from "antd"
+import { message, FloatButton, Modal, notification,Drawer,Timeline, Button, Avatar} from "antd"
 import {v4 as uuidv4} from 'uuid';
 import Link from "next/link"
 import { startCase } from "lodash";
@@ -9,8 +9,9 @@ import { startCase } from "lodash";
 const defaultModel = shoeData["NewBalance"]
 export default function Card({ session, data }) {
   const [modelInfo, setModelInfo] = useState(defaultModel)
-  const [messageApi, contextHolder] = message.useMessage()
+  const [messageApi, messageContextHolder] = message.useMessage()
   const { key, name, primary='orange',subHeading, description, price,isDiscount,prevPrice } = data
+
 
   const handleSizeClick = (userSize) => {
     setModelInfo((prevVal) => ({ ...prevVal, size: userSize }))
@@ -62,7 +63,7 @@ export default function Card({ session, data }) {
   }
   return (
         <div class="w-full bg-inherit z-1 p-2 border-dashed">
-            {contextHolder}
+            {messageContextHolder}
           <div class="shoeName">
             <div>
               <h1 class="big">{name}</h1>

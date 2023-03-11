@@ -122,7 +122,7 @@ export default function Main({ session }) {
         <Block factor={1.5} offset={0}>
           <Shapes />
           <HtmlContent portal={domContent}>
-            <div className="menu left" style={{ top: "-1rem" }}>
+            <div className="menu left" style={{ top: '0.75rem' }}>
               <a href="./">
                 <h2 style={{ fontSize: "2em" }}>Kick Store</h2>
               </a>
