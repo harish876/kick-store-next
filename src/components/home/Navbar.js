@@ -10,10 +10,10 @@ function Navbar({session}) {
     signOut()
   }
   const [textColor, setTextColor] = useState("black");
-  const [navColor, setNavColor] = useState("transparent");
+  const [changeBackground,setChangeBackground] = useState(true)
   const listenScrollEvent = () => {
-    window.scrollY > 5 ? setNavColor("black") : setNavColor("white");
     window.scrollY > 5 ? setTextColor("white") : setTextColor("black");
+    window.scrollY >5 ? setChangeBackground(false):setChangeBackground(true)
   };
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -22,8 +22,7 @@ function Navbar({session}) {
     };
   }, []);
   return (
-    <div className={`sticky top-0 z-20 h-20 flex align-middle bg-${navColor} text-${textColor} transition-all duration-1100`}
-      >
+    <nav className={changeBackground ? 'navbar':'navbar active'}>
       <div className={`menu left text-${textColor} transition-colors`}>
           <h2 className={`text-${textColor}`}style={{ fontSize: "2em" }}>
           <Link href="/">
@@ -33,12 +32,12 @@ function Navbar({session}) {
 
       </div>
       <div className='hidden lg:flex flex-row space-x-8 justify-center top-4 left-12 right-20 absolute'>
-        <p className={`tracking-narrow font-bold text-sm text-${textColor} uppercase hover:border-b-2`}><Link href='/'>Home</Link></p>
-        <p className={`tracking-tight font-bold text-sm text-${textColor} uppercase`}><Link href='/'>Shoes</Link></p>
-        <p className={`tracking-tight font-bold text-sm text-${textColor} uppercase`}><Link href='/'>Clothing</Link></p>
-        <p className={`tracking-tight font-bold text-sm text-${textColor} uppercase`}><Link href='/'>Accessories</Link></p>
-        <p className={`tracking-tight font-bold text-sm text-${textColor} uppercase`}><Link href='/'>Below Retail</Link></p>
-        <p className={`tracking-tight font-bold text-sm text-${textColor} uppercase`}><Link href='/'>Sell your shoes</Link></p>
+        <p className={changeBackground ?'navbar-row-v1':'navbar-row-v1 active'}><Link href='/'>Home</Link></p>
+        <p className={changeBackground ?'navbar-row-v1':'navbar-row-v1 active'}><Link href='/'>Shoes</Link></p>
+        <p className={changeBackground ?'navbar-row-v1':'navbar-row-v1 active'}><Link href='/'>Clothing</Link></p>
+        <p className={changeBackground ?'navbar-row-v1':'navbar-row-v1 active'}><Link href='/'>Accessories</Link></p>
+        <p className={changeBackground ?'navbar-row-v1':'navbar-row-v1 active'}><Link href='/'>Below Retail</Link></p>
+        <p className={changeBackground ?'navbar-row-v1':'navbar-row-v1 active'}><Link href='/'>Sell your shoes</Link></p>
       </div>
       <div className="menu right" style={{ paddingRight: "5px" }}>
           {session && <span className=''><Avatar src={session.user.image} icon={<UserOutlined  />}/></span>}
@@ -47,7 +46,7 @@ function Navbar({session}) {
           {!session && <span><Link href='/register'>Sign up</Link></span>}
           {session && <span><Link  href='/cart'><ShoppingOutlined style={{fontSize:'24px',paddingBottom:'4px'}} /></Link></span>}
       </div>
-    </div>
+    </nav>
   )
 }
 

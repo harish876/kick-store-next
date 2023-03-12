@@ -29,7 +29,6 @@ function RenderSlides ({id,brandList}){
     )
 }
 function ShoeModel({id,session}) {
-  //temp_identifer
   const {brand="nike",brandList=nikeList} = getBrand(id)
   const data = brandList.filter((nikeShoes) => nikeShoes.id === id)[0]  || {}
   let mainRef = createRef();

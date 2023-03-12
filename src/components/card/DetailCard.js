@@ -1,37 +1,36 @@
 import { useState } from "react"
 import { ShoppingCartOutlined,DollarOutlined} from "@ant-design/icons"
-import { shoeData } from "../utils/data"
-import { message, FloatButton, Modal, notification,Drawer,Timeline, Button, Avatar} from "antd"
+import { message} from "antd"
 import {v4 as uuidv4} from 'uuid';
-import Link from "next/link"
 import { startCase } from "lodash";
+import axios from "axios";
+import {callApi} from '@/lib/callApi'
 
-const defaultModel = shoeData["NewBalance"]
-export default function Card({ session, data }) {
-  const [modelInfo, setModelInfo] = useState(defaultModel)
-  const [messageApi, messageContextHolder] = message.useMessage()
+export default function Card({ session, data, getKartData,environment }) {
   const { key, name, primary='orange',subHeading, description, price,isDiscount,prevPrice } = data
-
+  const [modelInfo, setModelInfo] = useState({})
+  const [messageApi, messageContextHolder] = message.useMessage()
 
   const handleSizeClick = (userSize) => {
     setModelInfo((prevVal) => ({ ...prevVal, size: userSize }))
   }
-  const getKartData = () =>{
-
-  }
-  const addKart = () => {
+  const addKart = async() => {
     if(!session)
     {
       return unauthorized()
     }
-    let transactionId= uuidv4();
-    const updatedModelInfo = {...modelInfo,id:transactionId}
+    let transactionId= uuidv4(); //remove this once database added
+    const updatedModelInfo = {...modelInfo,...data,...session,id:transactionId}
     if (updatedModelInfo.size) {
       if (["Fila"].includes(key)) {
         getKartData(updatedModelInfo)
+        const result = await axios.post(`http://localhost:3000/api/addCartItem`,updatedModelInfo)
         customModelSuccess()
       } else {
         getKartData(updatedModelInfo)
+        console.log(updatedModelInfo)
+        const result = await callApi('api/addCartItem','POST',updatedModelInfo)
+        //const result = await axios.post(`${process.env.REACT_API_URL}/api/addCartItem`,updatedModelInfo)
         success()
       }
     } else {

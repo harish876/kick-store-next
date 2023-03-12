@@ -78,8 +78,8 @@ const nikeList = [
         quantity:1,
         name:'NIKE KD 15 ALL-STAR',
         subHeading:'Brand New with Box (Deadstock)',
-        price:'130.00',
-        basePrice:'130.00',
+        price:'130',
+        basePrice:'130',
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV1199-100.jpg?v=1677377654',
         angles:[
             {
@@ -108,7 +108,7 @@ const nikeList = [
         id:'nk002',
         brand:"Nike",
         name:'AIR JORDAN 1 LOW TRUE BLUE',
-        price:'130.00',
+        price:'130',
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/553558-412.jpg?v=1677375488',
         alt:'AIR JORDAN 1 LOW TRUE BLUE',
         angles:[
@@ -135,18 +135,18 @@ const nikeList = [
         id:'nk003',
         brand:"Nike",
         name:'NIKE AIR MAX 95 BLACK EARTH SEQUOIA CARGO KHAKI',
-        price:'140.00',
+        price:'140',
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/FD0652-001.jpg?v=1677354064',
         alt:'NIKE AIR MAX 95 BLACK EARTH SEQUOIA CARGO KHAKI',
         isDiscount:true,
         disount:'20',
-        prevPrice:'150.00'
+        prevPrice:'150'
     },
     {
         id:'nk004',
         brand:"Nike",
         name:'NIKE AIR FORCE 1 LOW 07 LX PLAID PALE IVORY STADIUM GREEN',
-        price:'160.00',
+        price:'160',
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV0791-100.jpg?v=1677375950',
         alt:'NIKE AIR FORCE 1 LOW 07 LX PLAID PALE IVORY STADIUM GREEN',
         angles:[
@@ -177,18 +177,18 @@ const nikeList = [
         id:'nk005',
         brand:"Nike",
         name:'NIKE AIR MAX 97 MOVING COMPANY',
-        price:'120.00',
+        price:'120',
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV2621-200.jpg?v=1677353027',
         alt:'NIKE AIR MAX 97 MOVING COMPANY',
         isDiscount:true,
         disount:'13',
-        prevPrice:'150.00'
+        prevPrice:'150'
     },
     {
         id:'nk006',
         brand:"Nike",
         name:'NIKE AIR MAX SCORPION FK BARELY VOLT',
-        price:'100.00',
+        price:'100',
         primary:'#2db7f5',
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DJ4701-300.jpg?v=1677352770',
         alt:'NIKE AIR MAX SCORPION FK BARELY VOLT',

@@ -1,3 +1,50 @@
+.navbar{
+  position: sticky;
+  top: 0px;
+  z-index: 20;
+  height: 5rem;
+  vertical-align: middle;
+  background-color: transparent;
+  color: black;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 1000ms;
+}
+.navbar.active{
+  position: sticky;
+  top: 0px;
+  z-index: 20;
+  height: 5rem;
+  vertical-align: middle;
+  background-color: black;
+  color: white;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 1000ms;
+}
+
+.navbar-row{
+  font-weight: 700;
+  font-size: 0.875rem/* 14px */;
+  line-height: 1.25rem/* 20px */;
+  text-transform: uppercase;
+  color: black;
+}
+.navbar-row-v1{
+  @apply font-bold text-sm text-black uppercase hover:border-b-2
+}
+.navbar-row-v1.active{
+  @apply font-bold text-sm text-white uppercase hover:border-b-2
+}
+.navbar-row.active{
+  font-weight: 700;
+  font-size: 0.875rem/* 14px */;
+  line-height: 1.25rem/* 20px */;
+  text-transform: uppercase;
+  color: white;
+}
 .picker {
   position: absolute !important;
   top: 74px;

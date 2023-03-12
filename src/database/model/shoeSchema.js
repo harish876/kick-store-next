@@ -15,6 +15,6 @@ const shoeSchema = new Schema({
     customModel:Object
 })
 
-const ShoeCollection = models.shoe_schema || model('shoe_schema', shoeSchema);
+const ShoeCollection = models.shoe_collection || model('shoe_collection', shoeSchema);
 
 export default ShoeCollection;
