@@ -124,7 +124,7 @@ function ListShoe() {
                         <h3>Hurry up! Only 5 left in stock</h3>
                         <Progress  className='mt-4' strokeColor='#333f' percent={30} showInfo={false}/>
                     </div>
-                    <Button onClick={displayCart}text="Display Cart temp" size="md"/>
+                    {/*<Button onClick={displayCart}text="Display Cart temp" size="md"/>*/}
                 </div>
             </div>
             <hr className='mt-4'/>

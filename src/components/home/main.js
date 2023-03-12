@@ -85,7 +85,7 @@ export default function Main({ session }) {
   return (
     <>
       {contextHolder}
-      {session && <FloatButton
+      {/*session && <FloatButton
         icon={<ShoppingCartOutlined />}
         onClick={openKart}
         tooltip={<div>Checkout to cart</div>}
@@ -95,8 +95,8 @@ export default function Main({ session }) {
           width: 60,
           height: 60,
         }}
-      />}
-      {session && <FloatButton
+      />*/}
+      {/*session && <FloatButton
         icon={
         <img style={{height:'20px',width:'20px',display:'flex',justifyContent:'center',alignItems:'center',textAlign:'center'}}
         src="https://img.icons8.com/cotton/64/null/track-order.png"/>
@@ -109,7 +109,7 @@ export default function Main({ session }) {
           width: 60,
           height: 60,
         }}
-      />}
+      />*/}
       <Canvas
         gl={{ alpha: false, antialias: true }}
         camera={{ position: [0, 0, 4.5], fov: 50, near: 0.1, far: 100 }}
