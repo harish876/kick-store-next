@@ -6,7 +6,8 @@ module.exports = {
       colors:{
         'form-bg':'#ee9d37',
         'form-blue':'#4cd4fc',
-        'form-blue-dark':'#1fa7d5'
+        'form-blue-dark':'#1fa7d5',
+        'button-hover':'#f6f6f6'
       }
     },
   },

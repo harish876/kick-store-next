@@ -4,6 +4,7 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import { Breadcrumb, Collapse,Progress } from 'antd';
 import { nikeList,paymentIcons,mainOptions,thumbsOptions } from "../utils/data";
 import { getBrand } from '@/lib/common';
+import Image from 'next/image';
 import { get,startCase,lowerCase } from 'lodash';
 
 import ShoeCarousel from './shoeCarousel';
@@ -18,7 +19,7 @@ function RenderSlides ({id,brandList}){
         shoeAngles.map(({image,angle})=>{
             return(
                 <SplideSlide key={angle}  style={{display:'flex',justifyContent:'center'}}>
-                    <img 
+                    <Image
                     className='block h-auto w-ful'
                     src={image} 
                     alt={angle}

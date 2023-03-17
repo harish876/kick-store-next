@@ -1,17 +1,14 @@
-import { LoadingOutlined } from '@ant-design/icons';
-import '../styles.css'
-import { Spin } from 'antd';
-const antIcon = (
-  <LoadingOutlined
-    style={{
-      fontSize: 24,
-    }}
-    spin
-  />
-);
-const App = () =>{
-  <div >
-    <Spin />
- </div>
-  }
-export default App;
+import React from "react";
+import Image from "next/image";
+const Loading = () =>{
+  return(
+    <Image
+      src='https://media.tenor.com/FaeBjdx0UhcAAAAi/sneaker-shoe.gif'
+      alt="Loading Image"
+      priority
+      width={300}
+      height={300}
+      className="flex justify-center mx-20 my-16 opacity-30"/>
+  )
+}
+export default Loading;

@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '@/components/home/Navbar'
 import CartTable from '@/components/Table/CartTable'
 import Button from '@/components/Button/Button'
+import Link from 'next/link'
 import { getSession,useSession } from "next-auth/react"
 import axios from 'axios'
 import { get } from 'lodash'
@@ -59,7 +60,9 @@ function Cart(props) {
           }}
           >
           <h2 className='text-white uppercase'>Your Cart</h2>
-          <p className='text-white'>Home</p>
+          <Link href='./'>
+            <p className='text-white'>Home</p>
+          </Link>
         </div>
         <div className='p-10 mx-auto w-full'>
             <CartTable
@@ -67,9 +70,21 @@ function Cart(props) {
               items={cartDataV1}
             />
         </div>
-        <div className='flex flex-row justify-start space-x-8 w-3/4 mx-64' id='button-container'>
-          {/*<Button text="Update Cart"/>
-          <Button text="Continue Shopping"/>*/}
+        <div className='flex flex-row justify-center space-x-16' id='button-container'>
+          <Button
+            customClass='h-16 bg-black text-white py-2 px-4 uppercase text-sm tracking-tight hover:bg-form-blue-dark transition-colors'
+            hover={false}
+            size="lg"
+          >
+            Update cart
+          </Button>
+          <Button
+            customClass='h-16 bg-black text-white py-2 px-4 uppercase text-sm tracking-tight hover:bg-form-blue-dark transition-colors'
+            hover={false}
+            size="lg"
+          >
+            Continue Shopping
+          </Button>
         </div>
         </div>
     </div>

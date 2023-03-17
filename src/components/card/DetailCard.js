@@ -3,10 +3,10 @@ import { ShoppingCartOutlined,DollarOutlined} from "@ant-design/icons"
 import { message} from "antd"
 import {v4 as uuidv4} from 'uuid';
 import { startCase } from "lodash";
-import axios from "axios";
+import Button from "../Button/Button";
 import {callApi} from '@/lib/callApi'
 
-export default function Card({ session, data, getKartData,environment }) {
+export default function Card({ session, data, getKartData }) {
   const { key, name, primary='orange',subHeading, description, price,isDiscount,prevPrice } = data
   const [modelInfo, setModelInfo] = useState({})
   const [messageApi, messageContextHolder] = message.useMessage()
@@ -19,18 +19,16 @@ export default function Card({ session, data, getKartData,environment }) {
     {
       return unauthorized()
     }
-    let transactionId= uuidv4(); //remove this once database added
-    const updatedModelInfo = {...modelInfo,...data,...session,id:transactionId}
+    const updatedModelInfo = {...modelInfo,...data,...session}
     if (updatedModelInfo.size) {
       if (["Fila"].includes(key)) {
         getKartData(updatedModelInfo)
-        const result = await axios.post(`http://localhost:3000/api/addCartItem`,updatedModelInfo)
+        await callApi('api/addCartItem','POST',updatedModelInfo)
         customModelSuccess()
       } else {
         getKartData(updatedModelInfo)
         console.log(updatedModelInfo)
-        const result = await callApi('api/addCartItem','POST',updatedModelInfo)
-        //const result = await axios.post(`${process.env.REACT_API_URL}/api/addCartItem`,updatedModelInfo)
+        await callApi('api/addCartItem','POST',updatedModelInfo)
         success()
       }
     } else {
@@ -100,47 +98,27 @@ export default function Card({ session, data, getKartData,environment }) {
           <div class="py-1">
             <h3 class="text-md uppercase pt-1">size</h3>
             <div class="sizes">
-              <span
-                style={modelInfo.size === 7 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
-                onClick={() => handleSizeClick(7)}
-                className="size">
-                7
-              </span>
-              <span
-                style={modelInfo.size === 8 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
-                onClick={() => handleSizeClick(8)}
-                className="size">
-                8
-              </span>
-              <span
-                style={modelInfo.size === 9 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
-                onClick={() => handleSizeClick(9)}
-                className="size">
-                9
-              </span>
-              <span
-                style={modelInfo.size === 10 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
-                onClick={() => handleSizeClick(10)}
-                className="size">
-                10
-              </span>
-              <span
-                style={modelInfo.size === 11 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
-                onClick={() => handleSizeClick(11)}
-                className="size">
-                11
-              </span>
+              {[7,8,9,10,11].map((size)=>{
+                return(
+                  <Button
+                    key={size}
+                    customClass="size"
+                    style={modelInfo.size === size ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
+                    onClick={() => handleSizeClick(size)}>
+                    {size}
+                  </Button>
+                )
+              })}
             </div>
           </div>
           <div className="buy-price">
-            <div
-              className="button "
-              href="#"
+            <Button
+              customClass="button"
               onClick={addKart}
               style={{ backgroundColor: `${primary}`, color: "whitesmoke", transition: "background-color 0.5s ease" }}>
               <ShoppingCartOutlined />
               Add to cart
-            </div>
+            </Button>
             <div className="price">
               <DollarOutlined />
               <h1>{price}</h1>

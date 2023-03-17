@@ -1,6 +1,11 @@
 import React from 'react'
+import Link from 'next/link'
 
-function Button({text,size,onClick}) {
+let defaultStyling ={
+  "hover":' hover:bg-button-hover rounded-lg px-1'
+}
+function Button({size,onClick,href,customClass,children,style={},hover=true}) {
+  console.log(href)
   const sizeMapping ={
     'xs':'20',
     'sm':'32',
@@ -8,9 +13,25 @@ function Button({text,size,onClick}) {
     'lg':'64'
   }
   const width= sizeMapping[size] || sizeMapping['lg']
+  let defaultClass = ''
+  const className = customClass ? customClass : defaultClass
+  if(href){
+    return(
+      <Link
+        href={href}
+        style={style}
+        className={`${className}${`w-${width}`}${hover && defaultStyling["hover"]}`}>
+        {children}
+      </Link>
+    )
+  }
   return (
-    <button  onClick={onClick} className={`h-16 w-${width} bg-black text-white py-2 px-4 uppercase text-sm tracking-tight hover:bg-form-blue-dark transition-colors`}>
-        {text}
+    <button  
+        type="button"
+        onClick={onClick} 
+        style={style}
+        className={`${className}${`w-${width}`}${hover && defaultStyling["hover"]}`}>
+        {children}
     </button>
   )
 }
