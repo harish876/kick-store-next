@@ -102,7 +102,7 @@ export default function Card({ session, data, getKartData }) {
                 return(
                   <Button
                     key={size}
-                    customClass="size"
+                    customClass="size m-12"
                     style={modelInfo.size === size ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
                     onClick={() => handleSizeClick(size)}>
                     {size}
@@ -113,7 +113,7 @@ export default function Card({ session, data, getKartData }) {
           </div>
           <div className="buy-price">
             <Button
-              customClass="button"
+              customClass="button my-12"
               onClick={addKart}
               style={{ backgroundColor: `${primary}`, color: "whitesmoke", transition: "background-color 0.5s ease" }}>
               <ShoppingCartOutlined />
@@ -121,7 +121,7 @@ export default function Card({ session, data, getKartData }) {
             </Button>
             <div className="price">
               <DollarOutlined />
-              <h1>{price}</h1>
+              <h1 className="my-4">{price}</h1>
             </div>
           </div>
         </div>
