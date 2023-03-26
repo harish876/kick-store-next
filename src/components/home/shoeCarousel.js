@@ -36,12 +36,12 @@ const ShoeCarousel = ({items,brand}) =>{
     */
    return(
     <>
-    <h1 className="text-center text-3xl m-2  uppercase bg-white text-gray-700 mx-auto px-2 tracking-normal">{brand}</h1>
+    <h1 className="text-center text-3xl m-2 mx-auto uppercase bg-white text-gray-700 px-2 tracking-normal">{brand}</h1>
     <div className='h-1 bg-form-blue-dark w-1/12 mx-auto'></div>
     <Splide
     options={ options }
     aria-labelledby="autoplay-example-heading"
-    className="my-0"
+    className="my-4"
     hasTrack={ false }
   >
     <div style={ { position: 'relative' } }>

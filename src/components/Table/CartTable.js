@@ -55,7 +55,7 @@ function CartTable({columns,items}) {
         return(
             <div className='overflow-x-auto h-2/5 flex flex-col justify-center align-middle border-collapse border border-slate-300 w-1/2 mx-auto p-6'>
                     <img
-                        loading='lazy'
+                        priority
                         className='bg-inherit justify-center mx-auto'
                         src='https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png'
                         width={400}

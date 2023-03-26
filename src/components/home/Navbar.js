@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import Link from 'next/link'
-import { Avatar } from "antd"
-import { LogoutOutlined } from "@ant-design/icons"
+import { Avatar, Drawer, Space } from "antd"
+import { LogoutOutlined,MenuUnfoldOutlined } from "@ant-design/icons"
+import { HiMenuAlt1 } from 'react-icons/hi'
 import { signOut } from "next-auth/react"
 import Button from '@/components/Button/Button'
 import dynamic from 'next/dynamic'
@@ -10,11 +11,12 @@ function Navbar({session}) {
   const handleSignOut = () =>{
     signOut()
   }
+  const [open, setOpen] = useState(false);
   const [textColor, setTextColor] = useState("black");
   const [changeBackground,setChangeBackground] = useState(true)
   const listenScrollEvent = () => {
-    window.scrollY > 5 ? setTextColor("white") : setTextColor("black");
-    window.scrollY >5 ? setChangeBackground(false):setChangeBackground(true)
+    window.scrollY > 2 ? setTextColor("white") : setTextColor("black");
+    window.scrollY >2 ? setChangeBackground(false):setChangeBackground(true)
   };
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -22,12 +24,20 @@ function Navbar({session}) {
       window.removeEventListener("scroll", listenScrollEvent);
     };
   }, []);
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
   return (
     <nav className={changeBackground ? 'navbar':'navbar active'}>
-      <div id="hamburger menu" className='lg:hidden'>
-
+      <div id="hamburger menu" className='lg:hidden absolute top-4 py-2 lg:py-2 px-4 w-fit align-middle'>
+        <Button>
+          <HiMenuAlt1 onClick={showDrawer}className='cursor-pointer' style={{fontSize:'28px'}}/>
+        </Button>
       </div>
-      <div className={`menu left text-${textColor} transition-colors`}>
+      <div className={`absolute top-2 lg:left-8 left-16 right-16 lg:w-fit md:w-3/4  w-0 h-auto md:flex hidden justify-center align-middle text-${textColor} transition-colors`}>
           <Button href="/">
             <h2 className={`text-${textColor} mb-2`}style={{ fontSize: "2em" }}>Kick Store</h2>
           </Button>
@@ -48,6 +58,24 @@ function Navbar({session}) {
           {!session && <span><Button href='/register'>Sign up</Button></span>}
           {session  && <span><DynamicCount/></span>}
       </div>
+      {/* Make Drawer more Robust */}
+      <Drawer 
+        title="Menu"
+        placement="left"  
+        closable={false} 
+        onClose={onClose} 
+        open={open}
+        style={{textAlign:'center'}}      
+      >
+        <div className='w-3/4 mx-auto text-center flex flex-col space-y-9'>
+        <h4 ><Link href='./'>Home</Link></h4>
+        <h4 ><Link href='./list'>Shoes</Link></h4>
+        <h4 ><Link href='/'>Clothing</Link></h4>
+        <h4 ><Link href='/'>Accessories</Link></h4>
+        <h4 ><Link href='/'>Below Retail</Link></h4>
+        <h4 ><Link href='/'>Sell your shoes</Link></h4>
+        </div>
+      </Drawer>
     </nav>
   )
 }

@@ -42,7 +42,7 @@
   @apply hover:bg-button-hover rounded-lg p-0.5
 }
 .hover-icon.active{
-  @apply hover:bg-slate-800 rounded-lg p-0.5
+  @apply hover:bg-button-hover-dark rounded-lg p-0.5
 }
 .navbar-row.active{
   font-weight: 700;
@@ -140,7 +140,7 @@
 
 .menu.left {
   position: absolute;
-  top: 0.60rem;
+  top: 0.40rem;
   left: 2rem;
   height: auto;
   display: flex;
@@ -149,22 +149,24 @@
 }
 
 .menu.right {
-  position: absolute;
+  /*position: absolute;
   top: 1.35rem;
   right: 1rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
+  @apply absolute top-6 right-1 cursor-pointer flex h-auto justify-center align-middle
 }
 
 .menu.middle {
-  position: absolute;
+  /*position: absolute;
   top: 1rem;
   left: 4rem;
   right: 4rem;
   display: flex;
-  justify-content: center;
+  justify-content: center;*/
+  @apply absolute top-3 left-12 right-12 flex justify-center
 }
 
 .menu > span {
@@ -245,14 +247,6 @@
     height: 70px;
     top: 1.5rem;
     left: 2rem;
-  }
-  .menu.right {
-    top: 2rem;
-    right: 1rem;
-  }
-  .menu.left{
-    top: 1rem;
-    left: 1rem;
   }
   .jumbo h1 {
     font-size: 50px;

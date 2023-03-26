@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '@/components/home/Navbar'
 import Head from 'next/head'
 import { useSession } from "next-auth/react"
+import Footer from '@/components/footer/Footer'
 
 function GlobalLayout({children,customClass}) {
   const {data:session} = useSession()
@@ -18,6 +19,7 @@ function GlobalLayout({children,customClass}) {
     <main className={className}>
       {children}
     </main>
+    <Footer/>
   </>
   )
 }
