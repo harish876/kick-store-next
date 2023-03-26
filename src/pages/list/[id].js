@@ -1,11 +1,10 @@
 import React,{createRef,useEffect,useState} from 'react'
 import { useRouter } from 'next/router';
-import Navbar from '@/components/home/Navbar';
-//import ShoeModel from '@/components/home/shoeModel';
 import Button from '@/components/Button/Button';
 import DetailCard from '@/components/card/DetailCard'
 import ShoeCarousel from '@/components/home/shoeCarousel';
 import { useSession } from "next-auth/react"
+import Image from 'next/image';
 
 import { Splide, SplideSlide} from '@splidejs/react-splide';
 import "@splidejs/splide/dist/css/splide.min.css";
@@ -43,9 +42,6 @@ function ListShoe() {
   let thumbsRef = createRef();
   const [kartData, setKartData] = useState([])
 
-  const displayCart = () =>{
-    console.log(kartData)
-  }
   const getKartData = (data) => {
     setKartData(prevVal => [...prevVal, data])
   }
@@ -56,10 +52,8 @@ function ListShoe() {
       }
   },[id])
   return (
-    <div>
-    <Navbar session={session}/>
-    <div className="my-0 mx-auto px-4 md:px-12 h-full w-full">
-        <div className='h-full w-full my-2 p-4'>
+    <div className="my-0 mx-auto px-4 md:px-8 w-full">
+        <div className='h-full w-full my-2 px-1'>
             <div className='h-auto '>
                     <Breadcrumb separator=">">
                         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
@@ -84,7 +78,7 @@ function ListShoe() {
                     <RenderSlides id={id} brandList={brandList}/>
                     </Splide>
                 </div>
-                <div className='px-12 py-4 flex justify-center align-middle mx-auto w-full md:w-2/5'>
+                <div className='px-4 py-4 flex justify-center align-middle mx-auto w-full md:w-2/5'>
                     <DetailCard 
                         data={data}
                         session={session}
@@ -92,7 +86,7 @@ function ListShoe() {
                         getKartData={getKartData}
                     />
                 </div>
-                <div className='w-3/4 p-8 md:w-2/5 float-left h-1/2'>
+                <div className='w-3/4 py-8 md:w-2/5 float-left h-1/2'>
                 <Collapse defaultActiveKey={['1']}>
                     <Panel header={<h4 className='text-md font-bold flex flex-col'>Kick Store Guarantee</h4>} key="1" className='align-middle' style={{textAlign:'left',marginTop:'auto'}}>
                     <h4>ALWAYS 100% Authentic Fast Shipping!30-Day Returns</h4>
@@ -108,13 +102,7 @@ function ListShoe() {
                         <div className='grid grid-cols-3 align-middle gap-2 justify-center lg:ml-12'>
                             {
                                 paymentIcons && paymentIcons.map((paymentIcon)=>{
-                                    return(
-                                        <>
-                                            <img key={paymentIcon} src={paymentIcon} width={64} height={64}/>
-                                            {/*<Image src={paymentIcon} width={64} height={64}/>*/}
-                                            {/* learn to use image tag */}
-                                        </>
-                                    )
+                                    return(<Image key={paymentIcon} src={paymentIcon} width={64} height={64}/>)
                                 })
                             }
                         </div>
@@ -124,7 +112,6 @@ function ListShoe() {
                         <h3>Hurry up! Only 5 left in stock</h3>
                         <Progress  className='mt-4' strokeColor='#333f' percent={30} showInfo={false}/>
                     </div>
-                    {/*<Button onClick={displayCart}text="Display Cart temp" size="md"/>*/}
                 </div>
             </div>
             <hr className='mt-4'/>
@@ -133,11 +120,6 @@ function ListShoe() {
                 <ShoeCarousel items={brandList} brand={brand}/>
             </div>
         </div>
-    </div>
-      {/*<ShoeModel
-            id={query['id']}
-            session={session}
-      />*/}
     </div>
   )
 }

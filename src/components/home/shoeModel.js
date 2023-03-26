@@ -41,7 +41,7 @@ function ShoeModel({id,session}) {
       }
   },[id])
   return (
-    <div className="my-0 mx-auto px-4 md:px-12 h-full w-full">
+    <div className="my-0 mx-auto px-4 md:px-4 h-full w-full flex flex-col">
         <div className='h-full w-full my-2 p-4'>
             <div className='h-auto '>
                     <Breadcrumb separator=">">
@@ -51,7 +51,7 @@ function ShoeModel({id,session}) {
                     </Breadcrumb>
             </div>
             <div className='mt-0 mx-0 h-full flex flex-col w-full md:flex-row'>
-                <div className="wrapper px-8 py-4 w-full md:w-2/5">
+                <div className="wrapper px-8 py-4 w-full lg:w-2/5">
                     <Splide
                     options={ mainOptions }
                     ref={ mainRef }
@@ -67,13 +67,13 @@ function ShoeModel({id,session}) {
                     <RenderSlides id={id} brandList={brandList}/>
                     </Splide>
                 </div>
-                <div className='px-12 py-4 flex justify-center align-middle mx-auto w-full md:w-2/5'>
+                <div className='py-4 flex justify-center align-middle mx-auto w-full md:w-2/5'>
                     <DetailCard 
                         data={data}
                         session={session}
                     />
                 </div>
-                <div className='w-3/4 p-8 md:w-2/5 float-left h-1/2'>
+                <div className='w-3/4 p-8 lg:w-2/5 float-left h-1/2'>
                 <Collapse defaultActiveKey={['1']}>
                     <Panel header={<h4 className='text-md font-bold flex flex-col'>Kick Store Guarantee</h4>} key="1" className='align-middle' style={{textAlign:'left',marginTop:'auto'}}>
                     <h4>ALWAYS 100% Authentic Fast Shipping!30-Day Returns</h4>
@@ -91,9 +91,7 @@ function ShoeModel({id,session}) {
                                 paymentIcons && paymentIcons.map((paymentIcon)=>{
                                     return(
                                         <>
-                                            <img key={paymentIcon} src={paymentIcon} width={64} height={64}/>
-                                            {/*<Image src={paymentIcon} width={64} height={64}/>*/}
-                                            {/* learn to use image tag */}
+                                            <Image key={paymentIcon} src={paymentIcon} width={64} height={64}/>
                                         </>
                                     )
                                 })

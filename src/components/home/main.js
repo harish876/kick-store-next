@@ -6,8 +6,7 @@ import { Shapes, Categories, Box } from "./home"
 import state from "./store"
 import Card from "../card/Card"
 import { isEmpty,get } from "lodash"
-import { FloatButton, Modal, notification,Drawer,Timeline, Button, Avatar } from "antd"
-import { ShoppingCartOutlined,UserOutlined } from "@ant-design/icons"
+import { Modal, notification,Drawer,Timeline, Button, Avatar } from "antd"
 import Kart from "../kart/Kart"
 import { successMessage, emptyMessage } from '../utils/data'
 import { signOut } from "next-auth/react"
@@ -85,31 +84,6 @@ export default function Main({ session }) {
   return (
     <>
       {contextHolder}
-      {/*session && <FloatButton
-        icon={<ShoppingCartOutlined />}
-        onClick={openKart}
-        tooltip={<div>Checkout to cart</div>}
-        style={{
-          color: "wheat",
-          right: 24,
-          width: 60,
-          height: 60,
-        }}
-      />*/}
-      {/*session && <FloatButton
-        icon={
-        <img style={{height:'20px',width:'20px',display:'flex',justifyContent:'center',alignItems:'center',textAlign:'center'}}
-        src="https://img.icons8.com/cotton/64/null/track-order.png"/>
-        }
-        onClick={showDrawer}
-        tooltip={<div>Track Order Status</div>}
-        style={{
-          color: "wheat",
-          left: 24,
-          width: 60,
-          height: 60,
-        }}
-      />*/}
       <Canvas
         gl={{ alpha: false, antialias: true }}
         camera={{ position: [0, 0, 4.5], fov: 50, near: 0.1, far: 100 }}
@@ -122,17 +96,6 @@ export default function Main({ session }) {
         <Block factor={1.5} offset={0}>
           <Shapes />
           <HtmlContent portal={domContent}>
-            <div className="menu left" style={{ top: '0.75rem' }}>
-              <a href="./">
-                <h2 style={{ fontSize: "2em" }}>Kick Store</h2>
-              </a>
-            </div>
-            <div className="menu right" style={{ top: "1.55rem", paddingRight: "5px" }}>
-              {session && <span><Avatar src={session.user.image} style={{ backgroundColor: '#87d068'}}icon={<UserOutlined/>}/></span>}
-              {session && <span onClick={handleSignOut}>Sign out</span>}
-              {!session && <span><a href='./login'>Login</a></span>}
-              {!session && <span><a href='./register'>Sign up</a></span>}
-            </div>
             <div className="jumbo">
               <h1 style={{ left: "1rem", zIndex: "-1" }}>
                 &nbsp;&nbsp;&nbsp;Next Gen

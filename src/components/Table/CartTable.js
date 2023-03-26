@@ -4,6 +4,8 @@ import {FaPlus,FaMinus} from 'react-icons/fa'
 import { get,isEmpty,startCase,lowerCase } from 'lodash'
 import {callApi} from '@/lib/callApi'
 import Link from 'next/link'
+import { Spin } from 'antd'
+import { LoadingOutlined } from '@ant-design/icons';
 
 const sizeMapping ={
     7:'S',
@@ -12,14 +14,23 @@ const sizeMapping ={
     10:'XL',
     11:'XXL'
 }
+const antIcon = (
+    <LoadingOutlined
+      style={{
+        color:'black',
+        fontSize: 24,
+      }}
+      spin
+    />
+  );
 
-function refreshPage() {
-    window.location.reload(false);
+function refreshPage(){
+    window.location.reload(false)
 }
-
 function CartTable({columns,items}) {
   if(!isEmpty(items)){
     return (
+        <Spin spinning={false} indicator={antIcon}>
         <div className='overflow-x-auto'>
         <table className='border-collapse border border-slate-300 w-3/4 mx-auto '>
             <TableHead
@@ -31,11 +42,13 @@ function CartTable({columns,items}) {
                     <TableRow
                         key={item.key}
                         itemData={item}
-                    />)
+                    />
+                    )
                 })}
             </tbody>
         </table>
         </div>
+        </Spin>
     )
     }
     else{
@@ -72,21 +85,31 @@ function TableHead({columns}){
 }
 function TableRow({itemData}){
     const {name,price,size,angles,image} = itemData
-    const [quantity,setQuantity] = useState(1)
-    const [itemPrice,setItemPrice] = useState(price)
+    const [quantity,setQuantity] = useState(itemData.quantity)
+    const [loading,setLoading]= useState(false)
 
-    const handleIncrease = () =>{
-      setQuantity( prevVal => prevVal+1)
-      setItemPrice( prevVal => parseFloat(prevVal) + parseFloat(price))
+    const handleIncrease = async() =>{
+      setQuantity(prevVal => prevVal+1)
+      setLoading(true)
+      await callApi('api/updateCartItem','POST',{"id":get(itemData,'_id',null),quantity:quantity+1})
+      setLoading(false)
+      
     }
-    const handleDecrease =() =>{
-      if(quantity>1)
-      {
-          setQuantity( prevVal => prevVal-1)
-          setItemPrice( prevVal => parseFloat(prevVal) - parseFloat(price))
-      }
+    const handleDecrease = async() =>{
+        if(quantity === 1){
+            setLoading(true)
+            await callApi('api/deleteCartItem','DELETE',{"id":get(itemData,'_id',null)})
+            setLoading(false)
+        }
+        else{
+            setQuantity(prevVal => prevVal-1)
+            setLoading(true)
+            console.log(quantity)
+            await callApi('api/updateCartItem','POST',{"id":get(itemData,'_id',null),quantity:quantity-1})
+            setLoading(false)
+        }
     }
-    const deletItem = async() =>{
+    const deleteItem = async() =>{
         await callApi('api/deleteCartItem','DELETE',{"id":get(itemData,'_id',null)})
         refreshPage()
     }
@@ -110,6 +133,7 @@ function TableRow({itemData}){
         </td>
         <td className='align-middle text-center h-36 text-gray-500 w-48'>${price}</td>
         <td className='align-middle text-center h-32 w-48'>
+        <Spin spinning={loading} indicator={antIcon}>
             <div className='flex flex-row justify-center'>
                 <span className='border-l-2 border-t-2 border-b-2  border-slate-700 p-4'>
                     <p className='my-auto mx-auto text-sm'>{quantity}</p>
@@ -123,11 +147,12 @@ function TableRow({itemData}){
                     </span>
                 </div>
             </div>
+            </Spin>
         </td>
-        <td className='align-middle text-center h-32 text-gray-500 w-48'>${itemPrice}.00</td>
+        <td className='align-middle text-center h-32 text-gray-500 w-48'>$ {(quantity * parseFloat(price)).toFixed(2)}</td>
         <td className='align-middle text-center h-32'>
             <span className='flex justify-center text-black cursor-pointer hover:scale-75'>
-                <HiOutlineX onClick={deletItem}/>
+                <HiOutlineX onClick={deleteItem}/>
             </span>
         </td>
     </tr>

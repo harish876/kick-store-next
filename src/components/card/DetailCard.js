@@ -1,36 +1,35 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ShoppingCartOutlined,DollarOutlined} from "@ant-design/icons"
 import { message} from "antd"
-import {v4 as uuidv4} from 'uuid';
 import { startCase } from "lodash";
 import Button from "../Button/Button";
 import {callApi} from '@/lib/callApi'
+import { updateSignal } from '@/redux/cart.slice';
+import { useDispatch } from "react-redux";
 
-export default function Card({ session, data, getKartData }) {
-  const { key, name, primary='orange',subHeading, description, price,isDiscount,prevPrice } = data
+export default function Card({ session, data}) {
+  const dispatch = useDispatch()
+  const { key, name,subHeading, description, price,isDiscount,prevPrice } = data
+  const [primary,setPrimary] = useState('orange')
   const [modelInfo, setModelInfo] = useState({})
   const [messageApi, messageContextHolder] = message.useMessage()
-
+  useEffect(()=>{
+    const primaryArray = ['#2db7f5','grey','#87d068','#f50','orange']
+    const randomIdx = parseInt((Math.random()*10)%(primaryArray.length))
+    setPrimary(primaryArray[randomIdx])
+  },[])
   const handleSizeClick = (userSize) => {
     setModelInfo((prevVal) => ({ ...prevVal, size: userSize }))
   }
   const addKart = async() => {
-    if(!session)
-    {
+    if(!session){
       return unauthorized()
     }
     const updatedModelInfo = {...modelInfo,...data,...session}
     if (updatedModelInfo.size) {
-      if (["Fila"].includes(key)) {
-        getKartData(updatedModelInfo)
         await callApi('api/addCartItem','POST',updatedModelInfo)
-        customModelSuccess()
-      } else {
-        getKartData(updatedModelInfo)
-        console.log(updatedModelInfo)
-        await callApi('api/addCartItem','POST',updatedModelInfo)
+        dispatch(updateSignal())
         success()
-      }
     } else {
         error()
     }
@@ -59,15 +58,14 @@ export default function Card({ session, data, getKartData }) {
     })
   }
   return (
-        <div class="w-full bg-inherit z-1 p-2 border-dashed">
+        <div className="w-full bg-inherit z-1 p-2 border-dashed">
             {messageContextHolder}
-          <div class="shoeName">
+          <div className="shoeName">
             <div>
-              <h1 class="big">{name}</h1>
+              <h1 className="big">{name}</h1>
             </div>
             <div className='flex-1 space-x-2'>
-              <h3 class="small">{description}</h3>
-              {/* rating */}
+              <h3 className="small">{description}</h3>
             </div>
           </div>
           <div className="flex flex-col">
@@ -95,15 +93,15 @@ export default function Card({ session, data, getKartData }) {
               </span>
             </div>
           </div>
-          <div class="py-1">
-            <h3 class="text-md uppercase pt-1">size</h3>
-            <div class="sizes">
+          <div className="py-1">
+            <h3 className="text-md uppercase pt-1">size</h3>
+            <div className="sizes">
               {[7,8,9,10,11].map((size)=>{
                 return(
                   <Button
                     key={size}
                     customClass="size m-12"
-                    style={modelInfo.size === size ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
+                    style={modelInfo.size === size ? { backgroundColor: `${primary}`, color: "whitesmoke", transition: "background-color 0.5s ease"  } : {}}
                     onClick={() => handleSizeClick(size)}>
                     {size}
                   </Button>
@@ -121,7 +119,7 @@ export default function Card({ session, data, getKartData }) {
             </Button>
             <div className="price">
               <DollarOutlined />
-              <h1 className="my-4">{price}</h1>
+              <h1>{price}</h1>
             </div>
           </div>
         </div>

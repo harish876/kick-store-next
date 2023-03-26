@@ -38,6 +38,12 @@
 .navbar-row-v1.active{
   @apply font-bold text-sm text-white uppercase hover:border-b-2
 }
+.hover-icon{
+  @apply hover:bg-button-hover rounded-lg p-0.5
+}
+.hover-icon.active{
+  @apply hover:bg-slate-800 rounded-lg p-0.5
+}
 .navbar-row.active{
   font-weight: 700;
   font-size: 0.875rem/* 14px */;
@@ -134,7 +140,7 @@
 
 .menu.left {
   position: absolute;
-  top: 0.75rem;
+  top: 0.60rem;
   left: 2rem;
   height: auto;
   display: flex;
@@ -172,7 +178,7 @@
 
 .jumbo {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate3d(-50%, -40%, 0);
   display: flex;
@@ -242,11 +248,11 @@
   }
   .menu.right {
     top: 2rem;
-    right: 2rem;
+    right: 1rem;
   }
   .menu.left{
-    top: 2rem;
-    left: 2rem;
+    top: 1rem;
+    left: 1rem;
   }
   .jumbo h1 {
     font-size: 50px;

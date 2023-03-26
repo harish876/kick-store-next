@@ -7,7 +7,6 @@ export default async function handler(req,res){
 
     if(req.method === 'POST')
     {
-        console.log(req.body)
         if(isEmpty(req.body))
         {
             return res.status(404).json({error:"No form data"}) 

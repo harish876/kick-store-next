@@ -14,7 +14,6 @@ function Converse() {
   const ref = useRef()
   const snap = useSnapshot(state)
   const { nodes, materials } = useGLTF("yellow_nike_dunk_low_dusty_olive_from_video_clip.glb")
-  console.log(nodes,materials)
   const [hovered, set] = useState(null)
 
   useFrame((state) => {

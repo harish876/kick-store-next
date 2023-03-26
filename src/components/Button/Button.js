@@ -1,9 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 
-let defaultStyling ={
-  "hover":' hover:bg-button-hover rounded-lg px-1'
-}
 function Button({size,onClick,href,customClass,children,style={},hover=true}) {
   const sizeMapping ={
     'xs':'20',
@@ -19,7 +16,7 @@ function Button({size,onClick,href,customClass,children,style={},hover=true}) {
       <Link
         href={href}
         style={style}
-        className={`${className}${size && `w-${width}`}${hover && defaultStyling["hover"]}`}>
+        className={`${className}${size && `w-${width}`}`}>
         {children}
       </Link>
     )
@@ -29,7 +26,7 @@ function Button({size,onClick,href,customClass,children,style={},hover=true}) {
         type="button"
         onClick={onClick} 
         style={style}
-        className={`${className}${size && `w-${width}`}${hover && defaultStyling["hover"]}`}>
+        className={`${className}${size && `w-${width}`}`}>
         {children}
     </button>
   )

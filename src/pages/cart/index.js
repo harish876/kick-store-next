@@ -1,15 +1,13 @@
 import React from 'react'
-import Navbar from '@/components/home/Navbar'
 import CartTable from '@/components/Table/CartTable'
 import Button from '@/components/Button/Button'
 import Link from 'next/link'
-import { getSession,useSession } from "next-auth/react"
+import { getSession} from "next-auth/react"
 import axios from 'axios'
 import { get } from 'lodash'
 
 function Cart(props) {
-  const {data:session} = useSession()
-  const cartDataV1= get(props,'data.data',[])
+  const cartData= get(props,'data.data',[])
   const cartColumns = [
     {
       key:'productName',
@@ -42,10 +40,6 @@ function Cart(props) {
     },  
   ]
   return (
-    <div className='h-full'>
-        <Navbar
-          session={session}
-        />
         <div className='pb-12'>
         <div 
           style={{
@@ -67,27 +61,10 @@ function Cart(props) {
         <div className='p-10 mx-auto w-full'>
             <CartTable
               columns={cartColumns}
-              items={cartDataV1}
+              items={cartData}
             />
         </div>
-        <div className='flex flex-row justify-center space-x-16' id='button-container'>
-          <Button
-            customClass='h-16 bg-black text-white py-2 px-4 uppercase text-sm tracking-tight hover:bg-form-blue-dark transition-colors'
-            hover={false}
-            size="lg"
-          >
-            Update cart
-          </Button>
-          <Button
-            customClass='h-16 bg-black text-white py-2 px-4 uppercase text-sm tracking-tight hover:bg-form-blue-dark transition-colors'
-            hover={false}
-            size="lg"
-          >
-            Continue Shopping
-          </Button>
         </div>
-        </div>
-    </div>
   )
 }
 
@@ -105,7 +82,7 @@ export async function getServerSideProps({req}){
   }
   let result ={...session}
   const { user }= session
-  const {status,data} = await axios.post(`${process.env.API_URL}/api/getCartItem`,{"user":user}) //refactor to callApi later
+  const {status,data} = await axios.post(`${process.env.API_URL}/api/getCartItem`,{"user":user})
   result = status ? {...result,data} : result
   return{
     props:result
