@@ -1,4 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## FYI
+If the URL does not open up in first try, please keep refreshing. I dont know why vercel keeps giving a 504 error on the first click.
 
 ## Project Info
 1. Concept Shoe Store with 3D renderings using three and react fiber and Next js
