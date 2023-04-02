@@ -38,5 +38,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Todos
 1. Host it on vercel ✅ 
 2. Add env variables for 3rd party auth vendors (Google/Github) ✅ 
-3. Integrate MongoDB ❎
-4. Add Admin Dashboard to add/Delete shoe brands or edit details
+3. Integrate MongoDB ✅ 
+4. Add Admin Dashboard to add/Delete shoe brands or edit details ❎
