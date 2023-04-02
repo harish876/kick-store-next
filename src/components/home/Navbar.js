@@ -14,7 +14,9 @@ function Navbar({session}) {
   const [open, setOpen] = useState(false);
   const [textColor, setTextColor] = useState("black");
   const [changeBackground,setChangeBackground] = useState(true)
+  const [src,setSrc] = useState('logo.png')
   const listenScrollEvent = () => {
+    window.scrollY > 2 ? setSrc("logo-white.png") : setSrc("logo.png");
     window.scrollY > 2 ? setTextColor("white") : setTextColor("black");
     window.scrollY >2 ? setChangeBackground(false):setChangeBackground(true)
   };
@@ -37,13 +39,20 @@ function Navbar({session}) {
           <HiMenuAlt1 onClick={showDrawer}className='cursor-pointer' style={{fontSize:'28px'}}/>
         </Button>
       </div>
-      <div className={`absolute top-2 lg:left-8 left-16 right-16 lg:w-fit md:w-3/4  w-0 h-auto md:flex hidden justify-center align-middle text-${textColor} transition-colors`}>
-          <Button href="/">
-            <h2 className={`text-${textColor} mb-2`}style={{ fontSize: "2em" }}>Kick Store</h2>
+      <div className={`absolute top-1 lg:left-8 left-16 right-16 lg:w-fit md:w-3/4  w-0 h-auto md:flex hidden justify-center align-middle text-${textColor} transition-colors`}>
+          <Button 
+            href="/">
+            {/* <h2 className={`text-${textColor} mb-2`}style={{ fontSize: "2em" }}>Kick Store</h2> */}
+            <img 
+                src={src}
+                className='grayscale'
+                height={100}
+                width={100}
+            />
           </Button>
 
       </div>
-      <div className='hidden lg:flex flex-row space-x-8 justify-center top-4 left-12 right-20 absolute'>
+      <div className='hidden lg:flex flex-row space-x-12 justify-center top-4 left-12 right-20 absolute'>
         <p className={changeBackground ?'navbar-row-v1':'navbar-row-v1 active'}><Link href='./'>Home</Link></p>
         <p className={changeBackground ?'navbar-row-v1':'navbar-row-v1 active'}><Link href='./list'>Shoes</Link></p>
         <p className={changeBackground ?'navbar-row-v1':'navbar-row-v1 active'}><Link href='/'>Clothing</Link></p>

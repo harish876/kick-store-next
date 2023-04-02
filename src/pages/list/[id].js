@@ -5,24 +5,26 @@ import DetailCard from '@/components/card/DetailCard'
 import ShoeCarousel from '@/components/home/shoeCarousel';
 import { useSession } from "next-auth/react"
 import Image from 'next/image';
+import { Space,Image as AntImage,Breadcrumb, Collapse,Progress  } from 'antd';
+import { ZoomInOutlined } from '@ant-design/icons';
 
 import { Splide, SplideSlide} from '@splidejs/react-splide';
 import "@splidejs/splide/dist/css/splide.min.css";
-import { Breadcrumb, Collapse,Progress } from 'antd';
 import { nikeList,paymentIcons,mainOptions,thumbsOptions } from "../../components/utils/data";
 import { getBrand } from '@/lib/common';
 import { get,startCase,lowerCase } from 'lodash';
 
 const { Panel } = Collapse;
-function RenderSlides ({id,brandList}){
+function RenderSlides ({id,brandList,preview}){
    const shoeList = brandList.filter((brandShoes) => brandShoes.id === id) 
    const shoeAngles = get(shoeList[0],"angles",[])
     return(
         shoeAngles.map(({image,angle})=>{
             return(
                 <SplideSlide key={angle}  style={{display:'flex',justifyContent:'center'}}>
-                    <img 
-                    className='block h-auto w-ful'
+                <AntImage 
+                    width={300}
+                    className='block h-auto w-ful cursor-pointer'
                     src={image} 
                     alt={angle}
                 />
@@ -31,6 +33,32 @@ function RenderSlides ({id,brandList}){
         })
     )
 }
+
+function RenderSlidesV1 ({id,brandList,preview}){
+    const shoeList = brandList.filter((brandShoes) => brandShoes.id === id) 
+    const shoeAngles = get(shoeList[0],"angles",[])
+    const [visible,setVisible] = useState(false)
+     return(
+         shoeAngles.map(({image,angle})=>{
+             return(
+                 <SplideSlide key={angle}  style={{display:'flex',justifyContent:'center'}}>
+                 <AntImage 
+                     preview={{
+                        visible:false,
+                        mask: (
+                            <></>
+                          ),                
+                    }}
+                     width={300}
+                     className='block h-auto w-ful cursor-pointer'
+                     src={image} 
+                     alt={angle}
+                 />
+                 </SplideSlide>
+             )
+         })
+     )
+ }
 
 function ListShoe() {
   const { query} = useRouter();
@@ -41,7 +69,6 @@ function ListShoe() {
   let mainRef = createRef();
   let thumbsRef = createRef();
   const [kartData, setKartData] = useState([])
-
   const getKartData = (data) => {
     setKartData(prevVal => [...prevVal, data])
   }
@@ -68,14 +95,14 @@ function ListShoe() {
                     ref={ mainRef }
                     aria-labelledby="thumbnail-slider-example"
                     >
-                    <RenderSlides id={id} brandList={brandList}/>
+                        <RenderSlides id={id} brandList={brandList} preview={true}/>
                     </Splide>
                     <Splide
                     options={ thumbsOptions }
                     ref={ thumbsRef }
                     aria-label="The carousel with thumbnails. Selecting a thumbnail will change the main carousel"
                     >
-                    <RenderSlides id={id} brandList={brandList}/>
+                        <RenderSlidesV1 id={id} brandList={brandList} preview={false}/>
                     </Splide>
                 </div>
                 <div className='px-4 py-4 flex justify-center align-middle mx-auto w-full md:w-2/5'>

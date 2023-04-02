@@ -6,8 +6,9 @@ import { Shapes, Categories, Box } from "./home"
 import state from "./store"
 import Card from "../card/Card"
 import { isEmpty,get } from "lodash"
-import { Modal, notification,Drawer,Timeline, Button, Avatar } from "antd"
-import Kart from "../kart/Kart"
+import { Modal, notification,Drawer,Timeline, Button as AntButton, Avatar } from "antd"
+import { TfiTwitterAlt, TfiFacebook, TfiYoutube } from "react-icons/tfi"
+import Button from "../Button/Button"
 import { successMessage, emptyMessage } from '../utils/data'
 import { signOut } from "next-auth/react"
 
@@ -36,6 +37,9 @@ export default function Main({ session }) {
   const scrollArea = useRef()
   const onScroll = (e) => (state.top.current = e.target.scrollTop)
   useEffect(() => void onScroll({ target: scrollArea.current }), [])
+  useEffect(()=>{
+    setIsModalOpen(true)
+  },[])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [kartData, setKartData] = useState([])
   const [timeLineOpen, setTimeLineOpen] = useState(false);
@@ -114,21 +118,47 @@ export default function Main({ session }) {
             <Card getKartData={getKartData} session={session}/>
             {<Modal 
               sz="xl"
-              title="Cart" 
+              title={<div className="tracking-wide uppercase font-medium text-left p-2">Join Our Mailing List</div>}
+              centered 
               open={isModalOpen} 
               onCancel={handleCancel} //handle cancel has to be given twice to enable the cross icon
-              okText="Checkout"
-              footer={[
-                <Button key="return" onClick={handleCancel}>Return</Button>,
-                <Button key="checkout" onClick={handleOk}>Checkout</Button>
-              ]}
+              footer={[]}
+              okText="Ok"
               width={700}
               >
-            <Kart 
-                kartData={kartData?kartData:[]} 
-                userInfo={session?session.user:{}}
-                text="Test Props" 
-                editAttributes={editAttributes}/>
+            <div className="flex flex-row space-x-3 justify-between">
+            <div className="flex flex-col space-y-2 align-middle">
+            <div className="p-2 my-4 space-x-3 w-full">
+              <input
+                    type="text"
+                    placeholder='Enter your email...'
+                    className='mt-2 w-72 focus:outline-none border-none'
+                />
+                <Button 
+                    size="md"
+                    customClass='px-4 my-auto bg-black text-white tracking-wide h-12 mt-2'
+                >
+                     Subscribe
+                </Button>
+              </div>
+              <div>
+                <h4 className="uppercase tracking-normal text-black font-bold text-[0.6rem] m-2">
+                  Sign up for Exclusive Updates, new arrivals and insider only discounts
+                  </h4>
+              </div>
+                <div className='flex flex-row space-x-4 text-sm'>
+                    <span className='border-2 border-black p-2 rounded-full'><TfiTwitterAlt/></span>
+                    <span className='border-2 border-black p-2 rounded-full'><TfiFacebook/></span>
+                    <span className='border-2 border-black p-2 rounded-full'><TfiYoutube/></span>
+                </div>
+            </div>
+              <img 
+                src='https://kickstore.co.in/wp-content/uploads/2022/02/cropped-cropped-WhatsApp-Image-2022-02-10-at-12.52.11-PM-1.jpeg'
+                className="p-4"
+                height={200}
+                width={200}
+                />
+            </div>
             </Modal>}
             {/* make this dynamic */}
             <Drawer title="Track your Order: Order - 2145677" placement="right" onClose={onClose} open={timeLineOpen}>

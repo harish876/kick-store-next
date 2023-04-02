@@ -140,11 +140,33 @@ const nikeList = [
         quantity:1,
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/FD0652-001.jpg?v=1677354064',
         alt:'NIKE AIR MAX 95 BLACK EARTH SEQUOIA CARGO KHAKI',
+        angles:[
+            {
+                angle:'front',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/FD0652-001.jpg?v=1677354064'
+            },
+            {
+                angle:'bottom',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/FD0652-001_4.jpg?v=1677354064'
+            },
+            {
+                angle:'back',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/FD0652-001_2.jpg?v=1677354064'
+            },
+            {
+                angle:'side',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/FD0652-001_1.jpg?v=1677354064'
+            },
+            {
+                angle:'top',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/FD0652-001_3.jpg?v=1677354064'
+            }
+        ],
         isDiscount:true,
         disount:'20',
         prevPrice:'150'
     },
-    {
+    /*{
         id:'nk004',
         brand:"Nike",
         name:'NIKE AIR FORCE 1 LOW 07 LX PLAID PALE IVORY STADIUM GREEN',
@@ -175,7 +197,7 @@ const nikeList = [
             },
         ],
         isDiscount:false,
-    },
+    },*/
     {
         id:'nk005',
         brand:"Nike",
@@ -307,16 +329,16 @@ const paymentIcons =[
   'https://cdn.shopify.com/s/files/1/0212/4102/files/coinbase-icon.png?v=1632347278'
 ]
 const mainOptions= {
-    type      : 'slide',
-    perPage   : 1,
-    perMove   : 1,
-    gap       : '1.5rem',
-    padding   :'10px',
-    pagination: false,
-    arrows    : false,
+    type        : 'slide',
+    perPage     :  1,
+    perMove     :  1,
+    gap         : '1.5rem',
+    padding     : '10px',
+    pagination  : false,
+    arrows      : true,
     rewind      : true,
-    trimSpace: 'move',
-    height    :'30vh',
+    trimSpace   : 'move',
+    height      : '30vh',
     pagination  : false,
   };
 

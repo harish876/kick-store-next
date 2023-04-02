@@ -7,7 +7,7 @@ import { HiMail } from "react-icons/hi"
 const col1 =['Size Chart','Terms of use','Returns','Track Order','About us','Contact us']
 function Footer() {
   return (
-    <div className='hidden md:p-10 mt-32 bg-footer h-auto md:flex flex-row space-x-8 justify-evenly flex-wrap'>
+    <div className='hidden md:p-10 mt-48 bg-footer h-auto md:flex flex-row space-x-8 justify-evenly flex-wrap'>
         <div className='flex flex-col align-top '>
             <span className='text-left text-gray-800 tracking-normal mb-2'>Information</span>
             <span className=' text-left h-1 bg-slate-900 w-12 mb-4'></span>
