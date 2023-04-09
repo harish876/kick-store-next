@@ -27,10 +27,6 @@ const Grid = ({gridUrl}) =>{
     const [wFrac,setWFrac] = useState(0)
   
     useEffect(()=>{
-        getItems()
-    },[])
-    
-    const getItems = async()=>{
         setLoading(true)
         callApi(`/api/${gridUrl}`,'POST',{}).then(({status,response}) => {
             if(!status){
@@ -47,7 +43,26 @@ const Grid = ({gridUrl}) =>{
             setLoading(false)
             setError(error)
         })
-    }
+    })
+    
+    // const getItems = async()=>{
+    //     setLoading(true)
+    //     callApi(`/api/${gridUrl}`,'POST',{}).then(({status,response}) => {
+    //         if(!status){
+    //             setError("Data Not Available")
+    //             setItems([])
+    //             return;
+    //         }
+    //         setLoading(false)
+    //         console.log(get(response,"data.data"))
+    //         setItems(get(response,"data.data",[]))
+            
+    //     }).catch((error) => {
+
+    //         setLoading(false)
+    //         setError(error)
+    //     })
+    // }
     const [current,setCurrent] = useState(1)
     const onChange = (page)=>{
       setCurrent(page)
@@ -75,6 +90,7 @@ const Grid = ({gridUrl}) =>{
         {showCol && colOptions.map((colOption)=>{
           return(
             <div 
+              key={colOption}
               onClick={()=>{ setColCount(colOption)}}
               className='h-[2.75rem] w-[2.75rem] border-black border-[1px] flex justify-center text-center cursor-pointer items-center transition-all hover:bg-black hover:text-white'>
               {colOption}

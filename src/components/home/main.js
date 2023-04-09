@@ -88,7 +88,7 @@ export default function Main({ session }) {
   const showPromiseConfirm = () => {
     confirm({
       title: 'Do you want to delete these items?',
-      icon: <ExclamationCircleFilled />,
+      icon: <div></div>,
       content: 'When clicked the OK button, this dialog will be closed after 1 second',
       onOk() {
         return new Promise((resolve, reject) => {
