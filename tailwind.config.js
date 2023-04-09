@@ -12,11 +12,29 @@ module.exports = {
         'footer':"#f2f2f2",
       },
       transitionProperty: {
-        //'width': 'width'
+        'width': 'width'
       }
     },
   },
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          "primary": "white",
+          "secondary": "black",
+          "accent": "#FFF232",
+          "neutral": "#1A1A1A",
+          "base-100": "white",
+          "info": "white",
+          "success": "#823290",
+          "warning": "#EE8133",
+          "error": "#E93F33",
+        },
+      },
+    ],
+  },
+
   plugins: [
-    require("daisyui")
+    require("daisyui"),
   ],
 }

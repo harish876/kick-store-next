@@ -3,11 +3,14 @@ import React,{useState,useEffect} from 'react'
 import Pagination from '../pagination/Pagination'
 import ShoeCard from '../card/ShoeCard'
 import LoadingWrapper from '../loading/LoadingWrapper'
+import { motion } from "framer-motion";
 
 import { FilterOutlined , LoadingOutlined } from '@ant-design/icons'
 import { get } from 'lodash'
 import { Col, Row , Spin } from 'antd';
 import { callApi } from '@/lib/callApi'
+import { Sidebar } from 'flowbite-react';
+import Button from '../Button/Button';
 
 const antIcon = (
     <LoadingOutlined
@@ -24,7 +27,7 @@ const Grid = ({gridUrl}) =>{
     const [error,setError] = useState(null)
     const [loading,setLoading] = useState(false)
     const [filterOpen,setFilterOpen] = useState(false)
-    const [wFrac,setWFrac] = useState(0)
+    const [condensed,setCondensed] = useState(false)
   
     useEffect(()=>{
         getItems()
@@ -61,7 +64,7 @@ const Grid = ({gridUrl}) =>{
     const [colCount, setColCount] = useState(4);
     return(
     <LoadingWrapper loading={loading} error={error} origin="shoes">
-      <div className='px-12 mt-4 h-screen'>
+      <div className='px-12 mt-4 h-screen drawer'>
         <div className='flex flex-row items-center justify-between space-x-2'>
         <div className='flex flex-row justify-start items-center space-x-2'>
           <label
@@ -95,28 +98,61 @@ const Grid = ({gridUrl}) =>{
           </div>
         </div>
       </div>
-        <div className='mt-4 flex flex-row justify-evenly'>
-        <input id="my-drawer" type="checkbox" className="drawer-toggle" onChange={()=>{
-            setTimeout(()=>{if(wFrac === 1){ setWFrac(0)}},350)
-            if(wFrac === 0){ setWFrac(1) }
-            console.log(wFrac)
-            }}/> 
-          <div className={`drawer-side w-${wFrac}/6 transition-transform ease-in-out`}>
-            <label htmlFor="my-drawer" className="drawer-overlay absolute"></label>
-            <ul className="menu p-4 w-auto h-auto flex mr-2">
-            <li><a>Sidebar Item 1</a></li>
-            <li><a>Sidebar Item 2</a></li>
-            </ul>
-        </div>
-          <Row gutter={[16, 16]} className={`w-${6-wFrac}/6 transition-transform ease-in-out`}>
-            {items && items.map((item)=>{
-              return(
-                <Col key={item.id} span={24/colCount}>
-                  <ShoeCard data={item}/>
-                </Col>
-              )
-            })}
-          </Row>
+        <div className='mt-0 flex flex-row'>
+            <motion.div 
+            animate={{
+                width: condensed ? 600 : 0,
+                transition:{
+                    type: "tween",
+                    duration: 0.5,
+                    ease: "circIn",
+                  },
+                }}
+                exit={{
+                    transition:{
+                        type: "tween",
+                        duration: 0.5,
+                        ease: "circOut",
+                  }}}
+                >
+                <input id="my-drawer" type="checkbox" className="drawer-toggle" onChange={()=>setCondensed(prevVal => !prevVal)}/>
+                <label htmlFor="my-drawer" className="drawer-content"></label>
+                <div className='drawer-side items-start'>
+                <ul className="menu p-4 w-96 h-auto flex mr-2 hover:bg-white text-black">
+                    <div className='space-y-4 items-start'>
+                        <Title>Categories</Title>
+                        <div className='flex flex-row  space-x-1 justify-between py-2'>
+                        <div 
+                            style={{borderRadius:'0px'}}
+                            className='p-2 h-auto w-auto border-black border-[1px] flex justify-center cursor-pointer items-center transition-all text-sm hover:bg-black hover:text-white'>
+                            New Arrivals
+                        </div>
+                        <div 
+                            style={{borderRadius:'0px'}}
+                            className='p-2 h-auto w-auto border-black border-[1px] flex justify-center cursor-pointer items-center transition-all hover:bg-black hover:text-white'>
+                            Below Retail
+                        </div>
+                        <div 
+                            style={{borderRadius:'0px'}}
+                            className='p-2 h-auto w-auto border-black border-[1px] flex justify-center cursor-pointer items-center transition-all hover:bg-black hover:text-white'>
+                            On Sale
+                        </div>
+                        </div>
+                        <Title>Size Option</Title>
+                        <Title>Price Filter</Title>
+                    </div>
+                </ul>
+                </div>
+            </motion.div>
+            <Row gutter={[16, 16]} className=''>
+                {items && items.map((item)=>{
+                return(
+                    <Col key={item.id} span={24/colCount}>
+                    <ShoeCard data={item}/>
+                    </Col>
+                )
+                })}
+            </Row>
         </div>
         <div className='flex justify-center items-center h-24 bottom-0'>
         <Pagination
@@ -131,3 +167,16 @@ const Grid = ({gridUrl}) =>{
   }
 
 export default Grid
+
+
+const Title = ({children}) => {
+    return(
+    <div className='flex flex-row space-x-4 items-center'>
+        <div className='h-4 bg-black w-1'></div>
+        <div className='text-md font-bold tracking-wide uppercase'>
+            {children}
+        </div>
+        <div className='flex-1 bg-footer h-[0.09rem]'></div>
+    </div>
+    )
+}
