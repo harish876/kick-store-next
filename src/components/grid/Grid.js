@@ -28,7 +28,7 @@ const Grid = ({gridUrl}) =>{
   
     useEffect(()=>{
         getItems()
-    })
+    },[])
     
     const getItems = async()=>{
         setLoading(true)
