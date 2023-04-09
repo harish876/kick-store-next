@@ -5,28 +5,24 @@ import ShoeCard from '../card/ShoeCard'
 import LoadingWrapper from '../loading/LoadingWrapper'
 import { motion } from "framer-motion";
 
-import { FilterOutlined , LoadingOutlined } from '@ant-design/icons'
+import { FilterOutlined } from '@ant-design/icons'
 import { get } from 'lodash'
-import { Col, Row , Spin } from 'antd';
+import { Col, Row  } from 'antd';
 import { callApi } from '@/lib/callApi'
-import { Sidebar } from 'flowbite-react';
-import Button from '../Button/Button';
-
-const antIcon = (
-    <LoadingOutlined
-      style={{
-        color:'black',
-        fontSize: 24,
-      }}
-      spin
-    />
-);
 
 const Grid = ({gridUrl}) =>{
     const [items,setItems] = useState([])
     const [error,setError] = useState(null)
     const [loading,setLoading] = useState(false)
     const [condensed,setCondensed] = useState(false)
+    const [currentPage,setCurrentPage] = useState(1)
+    const [filter,setFilter] = useState({})
+    const [showCol,setShowCol] = useState(false)
+    const [colCount, setColCount] = useState(4);
+
+    const onChange = (page)=>{
+      setCurrentPage(page)
+    }  
   
     useEffect(()=>{
         getItems()
@@ -50,20 +46,14 @@ const Grid = ({gridUrl}) =>{
             setError(error)
         })
     }
-    const [current,setCurrent] = useState(1)
-    const onChange = (page)=>{
-      setCurrent(page)
-    }  
-    const [showCol,setShowCol] = useState(false)
     const colCounts = {};
     const colOptions = [2, 3, 4, 6]
     colOptions.forEach((value, i) => {
       colCounts[i] = value;
     });
-    const [colCount, setColCount] = useState(4);
     return(
     <LoadingWrapper loading={loading} error={error} origin="shoes">
-      <div className='px-12 mt-4 h-screen drawer'>
+      <div className='px-12 mt-4 h-full drawer'>
         <div className='flex flex-row items-center justify-between space-x-2'>
         <div className='flex flex-row justify-start items-center space-x-2'>
           <label
@@ -120,25 +110,25 @@ const Grid = ({gridUrl}) =>{
                 <ul className="menu p-4 w-96 h-auto flex mr-2 hover:bg-white text-black">
                     <div className='space-y-4 items-start'>
                         <Title>Categories</Title>
+                        <div className='flex flex-row  space-x-3 justify-start py-2'>
+                            <FilterOptions>New Arrivals</FilterOptions>
+                            <FilterOptions>Below Retail</FilterOptions>
+                            <FilterOptions>On Sale</FilterOptions>
+                        </div>
+                        <Title>Brand Options</Title>
                         <div className='flex flex-row  space-x-1 justify-between py-2'>
-                        <div 
-                            style={{borderRadius:'0px'}}
-                            className='p-2 h-auto w-auto border-black border-[1px] flex justify-center cursor-pointer items-center transition-all text-sm hover:bg-black hover:text-white'>
-                            New Arrivals
+                            <FilterOptions>Nike</FilterOptions>
+                            <FilterOptions>New Balance</FilterOptions>
+                            <FilterOptions>Adidas</FilterOptions>
+                            <FilterOptions>Puma</FilterOptions>
+                            <FilterOptions>Reebok</FilterOptions>
                         </div>
-                        <div 
-                            style={{borderRadius:'0px'}}
-                            className='p-2 h-auto w-auto border-black border-[1px] flex justify-center cursor-pointer items-center transition-all hover:bg-black hover:text-white'>
-                            Below Retail
-                        </div>
-                        <div 
-                            style={{borderRadius:'0px'}}
-                            className='p-2 h-auto w-auto border-black border-[1px] flex justify-center cursor-pointer items-center transition-all hover:bg-black hover:text-white'>
-                            On Sale
-                        </div>
-                        </div>
-                        <Title>Size Option</Title>
                         <Title>Price Filter</Title>
+                        <div className='flex flex-col w-1/3 space-y-1 justify-between py-2'>
+                            <FilterOptions>$10 - $50</FilterOptions>
+                            <FilterOptions>$50 - $100</FilterOptions>
+                            <FilterOptions>$100 - $250</FilterOptions>
+                        </div>
                     </div>
                 </ul>
                 </div>
@@ -153,10 +143,10 @@ const Grid = ({gridUrl}) =>{
                 })}
             </Row>
         </div>
-        <div className='flex justify-center items-center h-24 bottom-0'>
+        <div className='flex justify-center items-center h-24'>
         <Pagination
             total={items.length} 
-            current={current}
+            current={currentPage}
             onChange={onChange}
             />
         </div>
@@ -178,4 +168,14 @@ const Title = ({children}) => {
         <div className='flex-1 bg-footer h-[0.09rem]'></div>
     </div>
     )
+}
+
+const FilterOptions = ({children}) => {
+  return(
+    <div 
+      style={{borderRadius:'0px'}}
+      className='p-2 h-auto w-auto border-black border-[1px] flex justify-center cursor-pointer items-center transition-all text-sm hover:bg-black hover:text-white'>
+    {children}
+    </div>
+  )
 }

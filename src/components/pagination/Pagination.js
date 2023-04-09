@@ -36,7 +36,7 @@ function Pagination({total,current,onChange}) {
         }
     }
 }
-        return(
+    return(
         <div className='flex space-x-2'>
             <div 
                 onClick={()=> currentPage>1 && onPageChange(currentPage-1) }
