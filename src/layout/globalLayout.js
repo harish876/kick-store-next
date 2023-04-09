@@ -19,7 +19,7 @@ function GlobalLayout({children,customClass}) {
     <main className={className}>
       {children}
     </main>
-    <Footer/>
+    {/* <Footer/> */}
   </>
   )
 }

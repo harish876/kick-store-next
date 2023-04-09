@@ -30,7 +30,6 @@ function refreshPage(){
 function CartTable({columns,items}) {
   if(!isEmpty(items)){
     return (
-        <Spin spinning={false} indicator={antIcon}>
         <div className='overflow-x-auto'>
         <table className='border-collapse border border-slate-300 w-3/4 mx-auto '>
             <TableHead
@@ -48,7 +47,6 @@ function CartTable({columns,items}) {
             </tbody>
         </table>
         </div>
-        </Spin>
     )
     }
     else{

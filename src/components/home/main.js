@@ -7,10 +7,10 @@ import state from "./store"
 import Card from "../card/Card"
 import { isEmpty,get } from "lodash"
 import { Modal, notification,Drawer,Timeline, Button as AntButton, Avatar } from "antd"
-import { TfiTwitterAlt, TfiFacebook, TfiYoutube } from "react-icons/tfi"
-import Button from "../Button/Button"
 import { successMessage, emptyMessage } from '../utils/data'
 import { signOut } from "next-auth/react"
+const { confirm } = Modal;
+import NewsLetter from "../newsLetter/NewsLetter"
 
 function HtmlContent({ className, style, children, portal }) {
   const { size } = useThree()
@@ -85,6 +85,19 @@ export default function Main({ session }) {
   const handleSignOut = () =>{
     signOut()
   }
+  const showPromiseConfirm = () => {
+    confirm({
+      title: 'Do you want to delete these items?',
+      icon: <ExclamationCircleFilled />,
+      content: 'When clicked the OK button, this dialog will be closed after 1 second',
+      onOk() {
+        return new Promise((resolve, reject) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+        }).catch(() => console.log('Oops errors!'));
+      },
+      onCancel() {},
+    });
+  };
   return (
     <>
       {contextHolder}
@@ -126,39 +139,7 @@ export default function Main({ session }) {
               okText="Ok"
               width={700}
               >
-            <div className="flex flex-row space-x-3 justify-between">
-            <div className="flex flex-col space-y-2 align-middle">
-            <div className="p-2 my-4 space-x-3 w-full">
-              <input
-                    type="text"
-                    placeholder='Enter your email...'
-                    className='mt-2 w-72 focus:outline-none border-none'
-                />
-                <Button 
-                    size="md"
-                    customClass='px-4 my-auto bg-black text-white tracking-wide h-12 mt-2'
-                >
-                     Subscribe
-                </Button>
-              </div>
-              <div>
-                <h4 className="uppercase tracking-normal text-black font-bold text-[0.6rem] m-2">
-                  Sign up for Exclusive Updates, new arrivals and insider only discounts
-                  </h4>
-              </div>
-                <div className='flex flex-row space-x-4 text-sm'>
-                    <span className='border-2 border-black p-2 rounded-full'><TfiTwitterAlt/></span>
-                    <span className='border-2 border-black p-2 rounded-full'><TfiFacebook/></span>
-                    <span className='border-2 border-black p-2 rounded-full'><TfiYoutube/></span>
-                </div>
-            </div>
-              <img 
-                src='https://kickstore.co.in/wp-content/uploads/2022/02/cropped-cropped-WhatsApp-Image-2022-02-10-at-12.52.11-PM-1.jpeg'
-                className="p-4"
-                height={200}
-                width={200}
-                />
-            </div>
+              <NewsLetter/>
             </Modal>}
             {/* make this dynamic */}
             <Drawer title="Track your Order: Order - 2145677" placement="right" onClose={onClose} open={timeLineOpen}>

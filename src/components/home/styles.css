@@ -156,7 +156,7 @@
   display: flex;
   justify-content: center;
   align-items: center;*/
-  @apply absolute top-6 right-1 cursor-pointer flex h-auto justify-center align-middle
+  @apply absolute top-6 right-1 cursor-pointer flex flex-row h-auto justify-center align-middle
 }
 
 .menu.middle {

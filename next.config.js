@@ -21,8 +21,14 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.freepik.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 }
-//https://cdn.shopify.com/s/files/1/0212/4102/products/DV1199-100_4.jpg?v=1677377655
+
 module.exports = nextConfig

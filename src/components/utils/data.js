@@ -203,8 +203,32 @@ const nikeList = [
         brand:"Nike",
         name:'NIKE AIR MAX 97 MOVING COMPANY',
         quantity:1,
+        description:'Nike Air Maxes',
+        subHeading: "Brand New with Box (Deadstock)",
         price:'120',
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV2621-200.jpg?v=1677353027',
+        angles:[
+            {
+                angle:'front',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV2621-200_1.jpg?v=1677353027'
+            },
+            {
+                angle:'top',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV2621-200_2.jpg?v=1677353027'
+            },
+            {
+                angle:'bottom',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV2621-200_4.jpg?v=1677353027'
+            },
+            {
+                angle:'back',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV2621-200_3.jpg?v=1677353027'
+            },
+            {
+                angle:'side',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DV2621-200.jpg?v=1677353027'
+            },
+        ],
         alt:'NIKE AIR MAX 97 MOVING COMPANY',
         isDiscount:true,
         disount:'13',
@@ -215,9 +239,33 @@ const nikeList = [
         brand:"Nike",
         name:'NIKE AIR MAX SCORPION FK BARELY VOLT',
         quantity:1,
+        description:'Nike Air Maxes',
+        subHeading: "Brand New with Box (Deadstock)",
         price:'100',
         primary:'#2db7f5',
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DJ4701-300.jpg?v=1677352770',
+        angles:[
+            {
+                angle:'front',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DJ4701-300_1.jpg?v=1677352770'
+            },
+            {
+                angle:'top',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DJ4701-300_3.jpg?v=1677352770'
+            },
+            {
+                angle:'bottom',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DJ4701-300_4.jpg?v=1677352770'
+            },
+            {
+                angle:'back',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DJ4701-300_2.jpg?v=1677352770'
+            },
+            {
+                angle:'side',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DJ4701-300.jpg?v=1677352770'
+            },
+        ],
         alt:'NIKE AIR MAX SCORPION FK BARELY VOLT',
         isDiscount:false,
     },
@@ -225,8 +273,32 @@ const nikeList = [
         id:'nk007',
         brand:"Nike",
         name:'NIKE AIR FORCE 1 LOW 07 RETRO COLOR OF THE MONTH PINK GUM',
+        description:'Nike Air Forces',
+        subHeading: "Brand New with Box (Deadstock)",
         quantity:1,
         price:'115',
+        angles:[
+            {
+                angle:'front',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DM0576-101.jpg?v=1677352527'
+            },
+            {
+                angle:'top',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DM0576-101_4.jpg?v=1677352527'
+            },
+            {
+                angle:'bottom',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DM0576-101_2.jpg?v=1677352527'
+            },
+            {
+                angle:'back',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DM0576-101_3.jpg?v=1677352527'
+            },
+            {
+                angle:'side',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DM0576-101_1.jpg?v=1677352527'
+            },
+        ],
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DM0576-101.jpg?v=1677352527',
         alt:'NIKE AIR FORCE 1 LOW 07 RETRO COLOR OF THE MONTH PINK GUM',
         isDiscount:false,
@@ -235,9 +307,33 @@ const nikeList = [
         id:'nk008',
         brand:"Nike",
         name:'NIKE AIR FORCE 1 LOW 07 MEDIUM BLUE',
+        description:'Nike Air Forces',
+        subHeading: "Brand New with Box (Deadstock)",
         quantity:1,
         price:'100',
         image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DH7561-104.jpg?v=1677351775',
+        angles:[
+            {
+                angle:'front',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DH7561-104.jpg?v=1677351775'
+            },
+            {
+                angle:'top',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DH7561-104_4.jpg?v=1677351775'
+            },
+            {
+                angle:'bottom',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DH7561-104_2.jpg?v=1677351775'
+            },
+            {
+                angle:'back',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DH7561-104_3.jpg?v=1677351775'
+            },
+            {
+                angle:'side',
+                image:'https://cdn.shopify.com/s/files/1/0212/4102/products/DH7561-104_1.jpg?v=1677351775'
+            },
+        ],
         alt:'NIKE AIR FORCE 1 LOW 07 MEDIUM BLUE',
         isDiscount:false,
     },
@@ -339,7 +435,6 @@ const mainOptions= {
     rewind      : true,
     trimSpace   : 'move',
     height      : '30vh',
-    pagination  : false,
   };
 
   const thumbsOptions= {
@@ -355,6 +450,8 @@ const mainOptions= {
     arrows      : false,
   };
 
+
+const PAGINATION_BLOCK_SIZE = 10
 module.exports ={
     shoeData,
     successMessage,
@@ -366,5 +463,6 @@ module.exports ={
     newBalanceList,
     paymentIcons,
     mainOptions,
-    thumbsOptions
+    thumbsOptions,
+    PAGINATION_BLOCK_SIZE
 }

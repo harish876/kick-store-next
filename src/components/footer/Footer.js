@@ -7,7 +7,7 @@ import { HiMail } from "react-icons/hi"
 const col1 =['Size Chart','Terms of use','Returns','Track Order','About us','Contact us']
 function Footer() {
   return (
-    <div className='hidden md:p-10 mt-48 bg-footer h-auto md:flex flex-row space-x-8 justify-evenly flex-wrap'>
+    <div className='bottom-0 hidden mt-48 md:p-10 bg-footer h-auto md:flex flex-row space-x-8 justify-evenly flex-wrap'>
         <div className='flex flex-col align-top '>
             <span className='text-left text-gray-800 tracking-normal mb-2'>Information</span>
             <span className=' text-left h-1 bg-slate-900 w-12 mb-4'></span>
@@ -38,7 +38,7 @@ function Footer() {
                     <HiMail className='my-auto'/>
                     <p className='text-sm mx-2 my-auto'>
                         <Link href='/'>
-                            Info@kickzstore.com
+                            Info@kickstore.com
                         </Link>
                     </p>
                 </span>
@@ -51,7 +51,7 @@ function Footer() {
             <span className='text-left text-gray-800 tracking-normal mb-2'>About</span>
             <span className=' text-left h-1 bg-slate-900 w-12 mb-4'></span>
             <p className='text-sm flex flex-wrap'>
-                Kickzstore.Com Online Sneaker Boutique.Your one-stop shop for the most sought after<br/>
+                Kickstore.Com Online Sneaker Boutique.Your one-stop shop for the most sought after<br/>
                 footwear on the market, early releases,or limited edition footwear and accessories.<br/>
                 Our sneakers are 100% authentic guaranteed or your money back.<br/> 
                 Returns are simple, customer service is our #1 priority <br/>

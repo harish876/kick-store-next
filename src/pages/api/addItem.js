@@ -1,6 +1,6 @@
 import connectDB from '@/database/connect'
 import ShoeCollection from "@/database/model/shoeSchema"
-import { isEmpty } from 'lodash'
+import { isEmpty , get } from 'lodash'
 
 export default async function handler(req,res){
     connectDB().catch(error => res.json({error:`Connection Failed: ${error}`}))
@@ -18,6 +18,7 @@ export default async function handler(req,res){
             }
             return res.status(201).json({status:true,data}) 
         })
+        
     }
     else
     {

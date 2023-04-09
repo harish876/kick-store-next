@@ -1,17 +1,26 @@
 import { Schema, model, models } from 'mongoose';
 
 const shoeSchema = new Schema({
+    id:String, //remove once not required
     key: String,
     name:String,
+    brand:String,
+    key:String,
     color:String,
     primary:String,
-    watermark:String,
-    heading:String,
-    subHeading:String,
     description:String,
+    subHeading:String,
+    heading:String,
+    quantity:Number,
     price:Number,
     basePrice:Number,
-    quantity:Number,
+    image:String,
+    angles:Array,
+    alt:String,
+    isDiscount:Boolean,
+    discount:Number,
+    prevPrice:Number,
+    watermark:String, 
     customModel:Object
 })
 
