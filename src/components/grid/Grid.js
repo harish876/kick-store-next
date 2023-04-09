@@ -26,7 +26,6 @@ const Grid = ({gridUrl}) =>{
     const [items,setItems] = useState([])
     const [error,setError] = useState(null)
     const [loading,setLoading] = useState(false)
-    const [filterOpen,setFilterOpen] = useState(false)
     const [condensed,setCondensed] = useState(false)
   
     useEffect(()=>{
