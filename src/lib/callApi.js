@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const callApi = async(url,method,body) =>{
-    //console.log(process.env.NEXT_PUBLIC_API_URL_1)
     try {
         const result = await axios({
             method,
