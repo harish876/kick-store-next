@@ -27,6 +27,10 @@ const Grid = ({gridUrl}) =>{
     const [wFrac,setWFrac] = useState(0)
   
     useEffect(()=>{
+        getItems()
+    })
+    
+    const getItems = async()=>{
         setLoading(true)
         callApi(`/api/${gridUrl}`,'POST',{}).then(({status,response}) => {
             if(!status){
@@ -43,26 +47,7 @@ const Grid = ({gridUrl}) =>{
             setLoading(false)
             setError(error)
         })
-    })
-    
-    // const getItems = async()=>{
-    //     setLoading(true)
-    //     callApi(`/api/${gridUrl}`,'POST',{}).then(({status,response}) => {
-    //         if(!status){
-    //             setError("Data Not Available")
-    //             setItems([])
-    //             return;
-    //         }
-    //         setLoading(false)
-    //         console.log(get(response,"data.data"))
-    //         setItems(get(response,"data.data",[]))
-            
-    //     }).catch((error) => {
-
-    //         setLoading(false)
-    //         setError(error)
-    //     })
-    // }
+    }
     const [current,setCurrent] = useState(1)
     const onChange = (page)=>{
       setCurrent(page)
