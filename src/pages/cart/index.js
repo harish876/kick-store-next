@@ -1,6 +1,5 @@
 import React from "react";
-import CartTable from "@/components/table/CartTable";
-import Button from "@/components/card/Button";
+import CartTable from "@/components/card/CartTable";
 import Link from "next/link";
 import { getSession } from "next-auth/react";
 import axios from "axios";
