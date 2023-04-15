@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Button from "../button/button";
+import Button from "../card/Button";
 import { ShoppingOutlined } from "@ant-design/icons";
 import { Badge } from "antd";
 import { useSelector, useDispatch } from "react-redux";

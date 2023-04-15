@@ -4,7 +4,7 @@ import { Avatar, Drawer } from "antd";
 import { LogoutOutlined, LoginOutlined } from "@ant-design/icons";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { signOut } from "next-auth/react";
-import Button from "@/components/button/Button";
+import Button from "@/components/card/Button";
 import dynamic from "next/dynamic";
 
 import Image from "next/image";

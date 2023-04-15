@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ShoppingCartOutlined, DollarOutlined } from "@ant-design/icons";
 import { message } from "antd";
 import { startCase } from "lodash";
-import Button from "@/components/button/Button";
+import Button from "@/components/card/Button";
 import { callApi } from "@/lib/callApi";
 import { updateSignal } from "@/redux/cart.slice";
 import { useDispatch } from "react-redux";

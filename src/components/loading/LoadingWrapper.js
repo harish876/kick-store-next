@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Spin, message } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { isEmpty } from "lodash";
-import Button from "../button/Button";
+import Button from "../card/Button";
 import { useEffect } from "react";
 
 const antIcon = (

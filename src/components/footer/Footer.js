@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Button from "@/components/button/Button";
+import Button from "@/components/card/Button";
 import { TfiTwitterAlt, TfiFacebook, TfiYoutube } from "react-icons/tfi";
 import { HiMail } from "react-icons/hi";
 

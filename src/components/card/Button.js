@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-function Button({
+export default function Button({
   size,
   onClick,
   href,
@@ -41,5 +41,3 @@ function Button({
     </button>
   );
 }
-
-export default Button;

@@ -1,12 +1,10 @@
 import React, { createRef, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Button from "@/components/button/button";
 import DetailCard from "@/components/card/DetailCard";
 import ShoeCarousel from "@/components/home/shoeCarousel";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { Space, Image as AntImage, Breadcrumb, Collapse, Progress } from "antd";
-import { ZoomInOutlined } from "@ant-design/icons";
+import { Image as AntImage, Breadcrumb, Collapse, Progress } from "antd";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
