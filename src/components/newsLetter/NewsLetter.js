@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TfiTwitterAlt, TfiFacebook, TfiYoutube } from "react-icons/tfi";
-import Button from "../button/button";
+import Button from "@/components/button/Button";
 
 export function NewsLetter() {
   const [newsletterEmail, setNewsletterEmail] = useState("");
