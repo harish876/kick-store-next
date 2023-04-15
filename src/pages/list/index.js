@@ -1,9 +1,7 @@
-import React from "react"
-import ShoeList from "@/components/home/shoeList"
+import React from "react";
+import ShoeList from "@/components/home/shoeList";
 function List() {
-  return (
-      <ShoeList/>
-  )
+  return <ShoeList />;
 }
 
-export default List
+export default List;

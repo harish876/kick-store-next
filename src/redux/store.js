@@ -1,9 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { cartReducer,signalReducer } from './cart.slice';
+import { configureStore } from "@reduxjs/toolkit";
+import { cartReducer, signalReducer } from "./cart.slice";
 
 let reducer = {
   cart: cartReducer,
-  signal: signalReducer
+  signal: signalReducer,
 };
 
 const store = configureStore({

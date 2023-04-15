@@ -1,0 +1,67 @@
+.wrapper {
+  @apply flex flex-row-reverse space-x-2 absolute right-10 pl-10 h-[2.75rem] w-auto overflow-hidden hover:w-auto
+}
+.contents,
+.contents .inner {
+  @apply flex mx-4 space-x-2 
+}
+
+.contents {
+    display: flex;
+    white-space: nowrap;
+}
+
+.contents .inner {
+  order:-1;
+  width: 0;
+  padding-left: 5px;
+  overflow: hidden;
+  -webkit-transition: width 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  transition: width 0.75s ease-in-out;
+}
+
+.wrapper:hover .contents .inner {
+  width: 200px;
+}
+
+
+.button-container {
+    @apply absolute w-auto right-10 flex justify-between overflow-hidden
+  }
+  
+.button-text-container {
+    @apply -order-1 items-center justify-center mr-4 overflow-hidden w-[200px] hidden group-hover:block transition-width duration-1000 
+}
+
+#parent {
+    @apply absolute w-auto right-10 flex flex-row-reverse justify-between overflow-hidden z-50
+}
+
+#child {
+    @apply w-0 mr-2 overflow-hidden transition-width duration-1000 ease-out
+}
+
+#parent:hover #child { 
+    @apply flex flex-col w-[80px] md:flex-row-reverse items-center whitespace-nowrap overflow-scroll md:w-[200px] transition-width duration-1000 ease-in-out
+    /* display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    white-space:nowrap; 
+    overflow:hidden;
+    width: 200px;
+    transition: width 1s ease-in-out; */
+  }
+
+.button-icon-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-icon-container:hover + .button-text-container{
+    width:200px;
+  }

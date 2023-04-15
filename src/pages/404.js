@@ -1,12 +1,12 @@
-import React from 'react'
-import NotFound from '@/components/customErrors/notFound'
+import React from "react";
+import NotFound from "@/components/customErrors/notFound";
 
 function notFound() {
   return (
     <div>
-      <NotFound/>
+      <NotFound />
     </div>
-  )
+  );
 }
 
-export default notFound
+export default notFound;

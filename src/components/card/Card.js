@@ -1,14 +1,18 @@
-import { useState } from "react"
-import { ShoppingCartOutlined,DollarOutlined,MoreOutlined } from "@ant-design/icons"
-import RenderModel from "../models/RenderModel"
-import { shoeData } from "../utils/data"
-import { Tag, Tooltip, message, Modal } from "antd"
-import {v4 as uuidv4} from 'uuid';
-import Link from "next/link"
+import { useState } from "react";
+import {
+  ShoppingCartOutlined,
+  DollarOutlined,
+  MoreOutlined,
+} from "@ant-design/icons";
+import RenderModel from "../models/RenderModel";
+import { shoeData } from "../utils/data";
+import { Tag, Tooltip, message, Modal } from "antd";
+import { v4 as uuidv4 } from "uuid";
+import Link from "next/link";
 
-const defaultModel = shoeData["NewBalance"]
+const defaultModel = shoeData["NewBalance"];
 export default function Card({ getKartData, session }) {
-  const [modelInfo, setModelInfo] = useState(defaultModel)
+  const [modelInfo, setModelInfo] = useState(defaultModel);
   const [customModel, setCustomModel] = useState({
     key: "filaCustom",
     laces: "#ffffff",
@@ -19,65 +23,83 @@ export default function Card({ getKartData, session }) {
     stripes: "#ffffff",
     band: "#ffffff",
     patch: "#ffffff",
-  })
-  const [messageApi, contextHolder] = message.useMessage()
-  const { key, name, color, primary, watermark, heading, subHeading, description, price } = modelInfo
+  });
+  const [messageApi, contextHolder] = message.useMessage();
+  const {
+    key,
+    name,
+    color,
+    primary,
+    watermark,
+    heading,
+    subHeading,
+    description,
+    price,
+  } = modelInfo;
 
   const changeModelInfo = (key) => {
-    setModelInfo({...shoeData[`${key}`]})
-  }
+    setModelInfo({ ...shoeData[`${key}`] });
+  };
   const handleSizeClick = (userSize) => {
-    setModelInfo((prevVal) => ({ ...prevVal, size: userSize }))
-  }
- 
-  const addKart = () => {
+    setModelInfo((prevVal) => ({ ...prevVal, size: userSize }));
+  };
 
-    if(!session)
-    {
-      return unauthorized()
+  const addKart = () => {
+    if (!session) {
+      return unauthorized();
     }
-    let transactionId= uuidv4();
-    const updatedModelInfo = {...modelInfo,id:transactionId}
+    let transactionId = uuidv4();
+    const updatedModelInfo = { ...modelInfo, id: transactionId };
     if (updatedModelInfo.size) {
       if (["Fila"].includes(key)) {
-        getKartData(updatedModelInfo)
-        customModelSuccess()
+        getKartData(updatedModelInfo);
+        customModelSuccess();
       } else {
-        getKartData(updatedModelInfo)
-        success()
+        getKartData(updatedModelInfo);
+        success();
       }
     } else {
-        error()
+      error();
     }
-  }
+  };
   const unauthorized = () => {
-    message.info(`Please login to order shoes`)
-  }
+    message.info(`Please login to order shoes`);
+  };
   const customModelSuccess = () => {
     messageApi.open({
       type: "success",
       content: `Customized ${name} Shoe Added to Kart`,
-    })
-  }
+    });
+  };
 
   const success = () => {
     messageApi.open({
       type: "success",
       content: `${name} Added to Kart`,
-    })
-  }
+    });
+  };
 
   const error = () => {
     messageApi.open({
       type: "error",
       content: "Please select a Shoe Size.",
-    })
-  }
+    });
+  };
   const chooseCustomModel = (model) => {
-    const { laces, mesh, caps, inner, sole, stripes, band, patch } = model
-    setCustomModel(prevVal => ({...prevVal,laces, mesh, caps, inner, sole, stripes, band, patch }))
-    setModelInfo((prevVal) => ({ ...prevVal, customModel }))
-  }
+    const { laces, mesh, caps, inner, sole, stripes, band, patch } = model;
+    setCustomModel((prevVal) => ({
+      ...prevVal,
+      laces,
+      mesh,
+      caps,
+      inner,
+      sole,
+      stripes,
+      band,
+      patch,
+    }));
+    setModelInfo((prevVal) => ({ ...prevVal, customModel }));
+  };
 
   return (
     <div class="container">
@@ -98,9 +120,11 @@ export default function Card({ getKartData, session }) {
             <div>
               <h1 class="big">{heading}</h1>
             </div>
-            <div className='flex-1 space-x-2'>
+            <div className="flex-1 space-x-2">
               <h3 class="small">{subHeading}</h3>
-              <Link href='./list'><Tag color={color}>More {name}</Tag></Link>
+              <Link href="./list">
+                <Tag color={color}>More {name}</Tag>
+              </Link>
             </div>
           </div>
           <div class="description">
@@ -115,8 +139,9 @@ export default function Card({ getKartData, session }) {
                   style={{ marginBottom: "4px", cursor: "pointer" }}
                   color="#2db7f5"
                   onClick={() => {
-                    changeModelInfo("NewBalance")
-                  }}>
+                    changeModelInfo("NewBalance");
+                  }}
+                >
                   New Balance
                 </Tag>
               </Tooltip>
@@ -125,8 +150,9 @@ export default function Card({ getKartData, session }) {
                   style={{ marginBottom: "4px", cursor: "pointer" }}
                   color="#87d068"
                   onClick={() => {
-                    changeModelInfo("Vans")
-                  }}>
+                    changeModelInfo("Vans");
+                  }}
+                >
                   Vans
                 </Tag>
               </Tooltip>
@@ -135,8 +161,9 @@ export default function Card({ getKartData, session }) {
                   style={{ marginBottom: "4px", cursor: "pointer" }}
                   color="#f50"
                   onClick={() => {
-                    changeModelInfo("Jordan")
-                  }}>
+                    changeModelInfo("Jordan");
+                  }}
+                >
                   Jordans
                 </Tag>
               </Tooltip>
@@ -145,8 +172,9 @@ export default function Card({ getKartData, session }) {
                   style={{ marginBottom: "4px", cursor: "pointer" }}
                   color="grey"
                   onClick={() => {
-                    changeModelInfo("NikeAirPegasus")
-                  }}>
+                    changeModelInfo("NikeAirPegasus");
+                  }}
+                >
                   Pegasus
                 </Tag>
               </Tooltip>
@@ -155,8 +183,9 @@ export default function Card({ getKartData, session }) {
                   style={{ marginBottom: "4px", cursor: "pointer" }}
                   color="orange"
                   onClick={() => {
-                    changeModelInfo("Fila")
-                  }}>
+                    changeModelInfo("Fila");
+                  }}
+                >
                   Fila
                 </Tag>
               </Tooltip>
@@ -166,33 +195,58 @@ export default function Card({ getKartData, session }) {
             <h3 class="title">size</h3>
             <div class="sizes">
               <span
-                style={modelInfo.size === 7 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
+                style={
+                  modelInfo.size === 7
+                    ? { backgroundColor: `${primary}`, color: "whitesmoke" }
+                    : {}
+                }
                 onClick={() => handleSizeClick(7)}
-                className="size">
+                className="size"
+              >
                 7
               </span>
               <span
-                style={modelInfo.size === 8 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
+                style={
+                  modelInfo.size === 8
+                    ? { backgroundColor: `${primary}`, color: "whitesmoke" }
+                    : {}
+                }
                 onClick={() => handleSizeClick(8)}
-                className="size">
+                className="size"
+              >
                 8
               </span>
               <span
-                style={modelInfo.size === 9 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
+                style={
+                  modelInfo.size === 9
+                    ? { backgroundColor: `${primary}`, color: "whitesmoke" }
+                    : {}
+                }
                 onClick={() => handleSizeClick(9)}
-                className="size">
+                className="size"
+              >
                 9
               </span>
               <span
-                style={modelInfo.size === 10 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
+                style={
+                  modelInfo.size === 10
+                    ? { backgroundColor: `${primary}`, color: "whitesmoke" }
+                    : {}
+                }
                 onClick={() => handleSizeClick(10)}
-                className="size">
+                className="size"
+              >
                 10
               </span>
               <span
-                style={modelInfo.size === 11 ? { backgroundColor: `${primary}`, color: "whitesmoke" } : {}}
+                style={
+                  modelInfo.size === 11
+                    ? { backgroundColor: `${primary}`, color: "whitesmoke" }
+                    : {}
+                }
                 onClick={() => handleSizeClick(11)}
-                className="size">
+                className="size"
+              >
                 11
               </span>
             </div>
@@ -202,7 +256,12 @@ export default function Card({ getKartData, session }) {
               className="button "
               href="#"
               onClick={addKart}
-              style={{ backgroundColor: `${primary}`, color: "whitesmoke", transition: "background-color 0.5s ease" }}>
+              style={{
+                backgroundColor: `${primary}`,
+                color: "whitesmoke",
+                transition: "background-color 0.5s ease",
+              }}
+            >
               <ShoppingCartOutlined />
               Add to cart
             </div>
@@ -214,5 +273,5 @@ export default function Card({ getKartData, session }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
