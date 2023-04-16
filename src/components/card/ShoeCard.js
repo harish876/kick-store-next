@@ -14,7 +14,7 @@ function ShoeCard(data) {
   const discount = get(data, "data.disount", 0);
   const prevPrice = get(data, "data.prevPrice", price);
   return (
-    <div className="flex flex-col mt-4 space-y-2 px-4 w-auto h-max md:w-auto lg:my-4 lg:px-4 lg:w-full hover:scale-110  cursor-pointer transition-all">
+    <div className="flex flex-col mt-4 space-y-2 px-4 w-auto h-max md:w-auto lg:my-4 lg:px-4 lg:w-full hover:scale-[1.04] cursor-pointer transition-all">
       {isDiscount && (
         <Badge.Ribbon text={`-${discount}%`} color="#1fa7d5"></Badge.Ribbon>
       )}

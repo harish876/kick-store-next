@@ -20,6 +20,15 @@ const callApi = async (url, method, body) => {
     };
   }
 };
+
+const swrFetcher = async(url, method, body) => {
+  axios({
+    method,
+    url,
+    data: body,
+  }).then((res) => res.docs);
+};
 module.exports = {
   callApi,
+  swrFetcher,
 };

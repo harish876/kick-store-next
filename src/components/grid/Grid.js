@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
+// import axios from "axios";
+// import useSWR from "swr";
 
 import Pagination from "../pagination/Pagination";
 import ShoeCard from "../card/ShoeCard";
 import GridWrapper from "../loading/LoadingWrapper";
+import SearchBar from "./SearchBar";
 import { motion } from "framer-motion";
 
 import { FilterOutlined } from "@ant-design/icons";
 import { get, omitBy, isEmpty } from "lodash";
 import { Col, Row } from "antd";
-import { callApi } from "@/lib/callApi";
+import { callApi, swrFetcher } from "@/lib/callApi";
 
 const Grid = ({ gridUrl, filter, perPage }) => {
   const [items, setItems] = useState([]);
@@ -36,6 +39,14 @@ const Grid = ({ gridUrl, filter, perPage }) => {
     setFilterOptions(value);
   };
 
+  // const fetcher = (args) => {
+  //   const { url, method , body} = args
+  //   console.log(method)
+  //   axios.post(url).then(res => res.data)
+  // }
+  // const { data } = useSWR({url:`${process.env.NEXT_PUBLIC_API_URL_1}/api/${gridUrl}`,method:'POST',body:filterOptions},fetcher)
+  // console.log(data);
+
   const getItems = async (payload) => {
     setLoading(true);
     callApi(`/api/${gridUrl}`, "POST", payload)
@@ -62,7 +73,7 @@ const Grid = ({ gridUrl, filter, perPage }) => {
   return (
     <GridWrapper loading={loading} error={error} size={items.length}>
       <div className="px-12 mt-4 h-full drawer drawer-end">
-        <div className="flex flex-row items-center justify-start space-x-2">
+        <div className="flex flex-row items-center justify-between space-x-4">
           <div className="flex flex-row justify-between items-center space-x-2">
             <label
               htmlFor="my-drawer"
@@ -72,7 +83,7 @@ const Grid = ({ gridUrl, filter, perPage }) => {
               <h4 className="tracking-wide uppercase font-semibold">Filter</h4>
             </label>
           </div>
-          <div className="flex flex-row justify-end items-center space-x-2">
+          <div className="flex flex-row justify-end items-center">
             <div
               className="group h-[2.75rem] absolute w-auto right-10 flex justify-between overflow-hidden"
               id="parent"
@@ -107,6 +118,11 @@ const Grid = ({ gridUrl, filter, perPage }) => {
                 </span>
               </div>
             </div>
+            <SearchBar
+              perPage={perPage}
+              setData={setItems}
+              setPagination={setTotalPages}
+            />
           </div>
         </div>
         <div className="mt-0 flex flex-row">
@@ -131,6 +147,7 @@ const Grid = ({ gridUrl, filter, perPage }) => {
               <ul className="menu p-2 w-[20rem] h-screen md:flex mr-2 hover:bg-white text-black">
                 <div className="space-y-4 items-start">
                   {filter &&
+                    !loading &&
                     filter.map((f) => {
                       const {
                         title = "",

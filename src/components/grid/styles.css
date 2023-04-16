@@ -32,11 +32,11 @@
   }
   
 .button-text-container {
-    @apply -order-1 items-center justify-center mr-4 overflow-hidden w-[200px] hidden group-hover:block transition-width duration-1000 
+    @apply items-center justify-center mr-4 overflow-hidden w-[200px] hidden group-hover:block transition-width duration-1000 
 }
 
 #parent {
-    @apply absolute w-auto right-10 flex flex-row-reverse justify-between overflow-hidden z-50
+    @apply hidden relative right-2 w-auto md:flex flex-row-reverse justify-between overflow-hidden
 }
 
 #child {
@@ -44,7 +44,7 @@
 }
 
 #parent:hover #child { 
-    @apply flex flex-col w-[80px] md:flex-row-reverse items-center whitespace-nowrap overflow-scroll md:w-[200px] transition-width duration-1000 ease-in-out
+    @apply flex flex-col w-[] md:flex-row-reverse items-center whitespace-nowrap overflow-scroll md:w-[200px] transition-width duration-1000 ease-in-out
     /* display: flex;
     flex-direction: row-reverse;
     align-items: center;

@@ -6,8 +6,9 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { Image as AntImage, Breadcrumb, Collapse, Progress } from "antd";
 
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide, SplideSlide} from '@splidejs/react-splide';
 import "@splidejs/splide/dist/css/splide.min.css";
+
 import {
   nikeList,
   paymentIcons,
@@ -29,7 +30,7 @@ function RenderSlides({ id, brandList, preview }) {
       >
         <AntImage
           width={300}
-          className="block h-auto w-ful cursor-pointer"
+          className="block h-auto w-full cursor-pointer"
           src={image}
           alt={angle}
         />
@@ -54,7 +55,7 @@ function RenderSlidesV1({ id, brandList, preview }) {
             mask: <></>,
           }}
           width={300}
-          className="block h-auto w-ful cursor-pointer"
+          className="block h-auto cursor-pointer"
           src={image}
           alt={angle}
         />
@@ -82,7 +83,7 @@ function ListShoe() {
     }
   }, [id]);
   return (
-    <div className="my-0 mx-auto px-4 md:px-8 w-full">
+    <div className="my-auto mx-auto px-4 md:px-8 w-full">
       <div className="h-full w-full my-2 px-1">
         <div className="h-auto ">
           <Breadcrumb separator=">">
@@ -92,10 +93,11 @@ function ListShoe() {
           </Breadcrumb>
         </div>
         <div className="mt-0 mx-0 h-full flex flex-col w-full md:flex-row">
-          <div className="wrapper px-8 py-4 w-full md:w-2/5">
+          <div className="px-8 py-4 md:w-2/5">
             <Splide
               options={mainOptions}
               ref={mainRef}
+              className='flex flex-row'
               aria-labelledby="thumbnail-slider-example"
             >
               <RenderSlides id={id} brandList={brandList} preview={true} />
@@ -104,7 +106,7 @@ function ListShoe() {
               options={thumbsOptions}
               ref={thumbsRef}
               aria-label="The carousel with thumbnails. Selecting a thumbnail will change the main carousel"
-              className="pt-4"
+              // className="pt-4"
             >
               <RenderSlidesV1 id={id} brandList={brandList} preview={false}/>
             </Splide>

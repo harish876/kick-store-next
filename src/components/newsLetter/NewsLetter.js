@@ -45,7 +45,7 @@ export function NewsLetter() {
       <img
         src="https://kickstore.co.in/wp-content/uploads/2022/02/cropped-cropped-WhatsApp-Image-2022-02-10-at-12.52.11-PM-1.jpeg"
         className="p-4"
-        height={200}
+        height={170}
         width={200}
       />
     </div>

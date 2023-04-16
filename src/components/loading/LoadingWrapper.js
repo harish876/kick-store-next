@@ -37,7 +37,7 @@ function LoadingWrapper({ children, loading, error, icon, size }) {
       errorMessage(error);
     }
   });
-  if (!isEmpty(error) || size == 0) {
+  if (!isEmpty((error) || size == 0) && !loading) {
     return (
       <>
         {contextHolder}
@@ -52,7 +52,7 @@ function LoadingWrapper({ children, loading, error, icon, size }) {
           />
           {
             <Button onClick={refresh} customClass="text-md uppercase font-bold">
-              Refresh Page
+              No Data
             </Button>
           }
         </div>
