@@ -61,10 +61,10 @@ export function Shapes() {
         scale={[0.8, 0.8, 0.8]}
         rotation={[0, 0, Math.PI / 10]}
       />
-      <ConverseDoodle
+      {/* <ConverseDoodle
         position={[-width / 2.5, height / 6, -1]}
         scale={[0.8, 0.8, 0.8]}
-      />
+      /> */}
       <group
         rotation={[Math.PI / 8, 0, 0]}
         position={[-width / 4, -height / 6, 0]}
