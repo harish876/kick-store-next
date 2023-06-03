@@ -149,7 +149,7 @@ export default function Main({ session }) {
           </HtmlContent>
         </Block>
 
-        <Block factor={2} offset={3}>
+        {/* <Block factor={2} offset={3}>
           <Box scale={[2, 2, 2]} />
           <Html center portal={domContent}>
             <h2>Scroll Down to explore shoes</h2>
@@ -172,7 +172,6 @@ export default function Main({ session }) {
                 <NewsLetter />
               </Modal>
             }
-            {/* make this dynamic */}
             <Drawer
               title="Track your Order: Order - 2145677"
               placement="right"
@@ -191,7 +190,7 @@ export default function Main({ session }) {
               </Timeline>
             </Drawer>
           </Html>
-        </Block>
+        </Block> */}
       </Canvas>
       <div
         className="scrollArea"

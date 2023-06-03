@@ -180,7 +180,7 @@
 
 .jumbo {
   position: absolute;
-  top: 45%;
+  top: 35%;
   left: 50%;
   transform: translate3d(-50%, -40%, 0);
   display: flex;
